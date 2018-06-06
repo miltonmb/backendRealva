@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=devide-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Backend</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="backend.js"></script>
+    <script src="test.js"></script>
+</body>
+</head>
+
+<body>
+    <nav class="navbar">
+        <span class="open-slide">
+            <a href="#" onclick="openSlideMenu()">
+                <svg width="30" height="30">
+                    <path d="M0,5 30,5" stroke="#fff" stroke-width="5" />
+                    <path d="M0,14 30,14" stroke="#fff" stroke-width="5" />
+                    <path d="M0,23 30,23" stroke="#fff" stroke-width="5" />
+                </svg>
+            </a>
+        </span>
+        <ul class="navbar-nav">
+            <li>
+                <a href="#">Carrusel Principal</a>
+            </li>
+            <li>
+                <a href="ofertas.html">Carrusel de Ofertas</a>
+            </li>
+            <li>
+                <a href="descargas.html">Descargas</a>
+            </li>
+            <li>
+                <a href="clientes.html">Clientes</a>
+            </li>
+            <li>
+                <a href="productos.html">Productos</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="side-menu" class="side-nav">
+        <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+        <a href="" onclick="closeSlideMenu()">Carrusel Principal</a>
+        <a href="ofertas.html">Carrusel de ofertas</a>
+        <a href="descargas.html">Descargas</a>
+        <a href="clientes.html">Aceptación de Clientes</a>
+        <a href="productos.html">Productos</a>
+    </div>
+    <div id="main">
+        <h1>Carrusel Principal</h1>
+        <div>
+            <form action="https://realva.000webhostapp.com/server/upload.php" method="post" enctype="multipart/form-data">
+                <h2>Subir archivos para el carrusel principal</h2>
+                <label for="fileSelect">Imagen:</label>
+                <input type="file" name="photo" id="fileSelect">
+                <input type="submit" name="submit" value="Subir">
+                <p>
+                    <strong>Nota:</strong> Solo los siguientes formatos, .jpg, .JPG, .jpeg, .gif, .png, con tamaño menor a 5MB</p>
+            </form>
+        </div>
+    </div>
+</html>
