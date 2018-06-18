@@ -9,9 +9,5 @@ var config = {
 firebase.initializeApp(config);
 function chargeClientes() {
     let cliente;
-    firebase.database().ref('users/').set({
-        username: "mario",
-        email: "arnulfo",
-    });
-    console.log('entro');
+    
 }
