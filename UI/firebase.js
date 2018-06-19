@@ -1,5 +1,6 @@
 var cliente;
 var paginaactual = 0;
+var selectedfile;
 var config = {
     apiKey: "AIzaSyBZAKqZfYiuQDTF-pDtZsxlO5X72wNFA1Q",
     authDomain: "realva-54c4a.firebaseapp.com",
@@ -15,7 +16,6 @@ window.onload = function () {
 }
 function chargeClientes() {
     cliente = [];
-    firebase.database().ref('productos').push({ clave: 'luis' });
     firebase.database().ref('clientes').on('value', function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
             cliente.push(childSnapshot.val());
@@ -27,7 +27,7 @@ function chargeNextPage() {
     let prueba = '';
     let cont = 0;
     let element;
-    if(paginaactual < (cliente.length/10)-1){
+    if (paginaactual < (cliente.length / 10) - 1) {
         paginaactual++;
         for (let i = paginaactual * 10; i < cliente.length; i++) {
             if (cont < 10) {
@@ -73,3 +73,38 @@ function updatePaginaActual() {
     prueba = 'Pagina Actual: ' + paginaactual;
     document.getElementById('htmlPaginaActual').innerHTML = prueba;
 }
+
+function uploadFile(){
+    const newImage = firebase.database().ref('/imagenes').push();
+    newImage.set({
+      id: newImage.key,
+      imagen: selectedfile
+    });
+}
+function getImage(){
+    let imagen=[];
+    firebase.database().ref('imagenes').on('value', function (snapshot) {
+        snapshot.forEach(function (childSnapshot) {
+            console.log(childSnapshot.val());
+            imagen.push(childSnapshot.val());
+        });
+        document.getElementById('mostrarimagen').innerHTML = `<img src='${imagen[1].imagen}'>`
+    });
+}
+function handleFileInput(){
+    var files = document.getElementById('imagen').files;
+    if (files.length > 0) {
+      getBase64(files[0]);
+    }
+}
+function getBase64(file) {
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+        selectedfile = reader.result;
+        document.getElementById('mostrarimagen').innerHTML = `<img src='${reader.result}'>`
+    };
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
+ }
