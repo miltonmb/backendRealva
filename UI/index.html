@@ -7,10 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Backend</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleImagen.css">
     <script src="jquery-3.3.1.min.js"></script>
     <script src="backend.js"></script>
     <script src="test.js"></script>
-</body>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="firebasePrincipal.js"></script>
+    </body>
 </head>
 
 <body>
@@ -54,14 +57,17 @@
     <div id="main">
         <h1>Carrusel Principal</h1>
         <div>
-            <form action="https://realva.000webhostapp.com/server/upload.php" method="post" enctype="multipart/form-data">
-                <h2>Subir archivos para el carrusel principal</h2>
-                <label for="fileSelect">Imagen:</label>
-                <input type="file" name="photo" id="fileSelect">
-                <input type="submit" name="submit" value="Subir">
-                <p>
-                    <strong>Nota:</strong> Solo los siguientes formatos, .jpg, .JPG, .jpeg, .gif, .png, con tamaño menor a 5MB</p>
-            </form>
+            <h2>Subir archivos para el carrusel de ofertas</h2>
+            <div>
+                <div id="mostrarimagen">
+                </div>
+                <input type="file" accept="image/*" id="imagenesOfertas" onchange="handleFileInput()">
+                <button onclick='uploadFile()'>Subir</button>
+            </div>
+        </div>
+        <div>
+            <div id="listaimagenes"></div>
         </div>
     </div>
+
 </html>

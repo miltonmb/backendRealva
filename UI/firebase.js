@@ -20,6 +20,7 @@ function chargeClientes() {
         snapshot.forEach(function (childSnapshot) {
             cliente.push(childSnapshot.val());
         });
+        console.log();
         chargeFirstPage();
     });
 }
@@ -32,7 +33,7 @@ function chargeNextPage() {
         for (let i = paginaactual * 10; i < cliente.length; i++) {
             if (cont < 10) {
                 element = cliente[i];
-                prueba += `<tr><td>${element.ClaveCliente}</td><td>${element.NombreEmpresa}</td><td>${element.NombreRepresetante}</td><td>${element.RTN}</td><td>${element.Estatus}</td><td>${element.Telefono1}</td><td>${element.Telefono2}</td><td>${element.Correo}</td><td>${element.Contraseña}</td><td>${element.Clasifiacion}</td><td>${element.Saldo}</td><td>${element.Direccion}</td><td><button>Aceptar</button></td><td><button>Modificar</button></td></tr>`;
+                prueba += `<tr><td>${element.ClaveCliente}</td><td>${element.NombreEmpresa}</td><td>${element.NombreRepresentante}</td><td>${element.RTN}</td><td>${element.Estatus}</td><td>${element.Telefono1}</td><td>${element.Telefono2}</td><td>${element.Correo}</td><td>${element.Contraseña}</td><td>${element.Clasificacion}</td><td>${element.Saldo}</td><td>${element.Direccion}</td><td><button>Aceptar</button></td><td><button>Modificar</button></td></tr>`;
                 cont++;
             }
         }
@@ -45,7 +46,7 @@ function chargeFirstPage() {
     let cont = 0;
     cliente.forEach(element => {
         if (cont < 10) {
-            prueba += `<tr><td>${element.ClaveCliente}</td><td>${element.NombreEmpresa}</td><td>${element.NombreRepresetante}</td><td>${element.RTN}</td><td>${element.Estatus}</td><td>${element.Telefono1}</td><td>${element.Telefono2}</td><td>${element.Correo}</td><td>${element.Contraseña}</td><td>${element.Clasifiacion}</td><td>${element.Saldo}</td><td>${element.Direccion}</td><td><button>Aceptar</button></td><td><button>Modificar</button></td></tr>`;
+            prueba += `<tr><td>${element.ClaveCliente}</td><td>${element.NombreEmpresa}</td><td>${element.NombreRepresentante}</td><td>${element.RTN}</td><td>${element.Estatus}</td><td>${element.Telefono1}</td><td>${element.Telefono2}</td><td>${element.Correo}</td><td>${element.Contraseña}</td><td>${element.Clasificacion}</td><td>${element.Saldo}</td><td>${element.Direccion}</td><td><button>Aceptar</button></td><td><button>Modificar</button></td></tr>`;
             cont++;
         }
     });
@@ -74,37 +75,3 @@ function updatePaginaActual() {
     document.getElementById('htmlPaginaActual').innerHTML = prueba;
 }
 
-function uploadFile(){
-    const newImage = firebase.database().ref('/imagenes').push();
-    newImage.set({
-      id: newImage.key,
-      imagen: selectedfile
-    });
-}
-function getImage(){
-    let imagen=[];
-    firebase.database().ref('imagenes').on('value', function (snapshot) {
-        snapshot.forEach(function (childSnapshot) {
-            console.log(childSnapshot.val());
-            imagen.push(childSnapshot.val());
-        });
-        document.getElementById('mostrarimagen').innerHTML = `<img src='${imagen[1].imagen}'>`
-    });
-}
-function handleFileInput(){
-    var files = document.getElementById('imagen').files;
-    if (files.length > 0) {
-      getBase64(files[0]);
-    }
-}
-function getBase64(file) {
-    var reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = function () {
-        selectedfile = reader.result;
-        document.getElementById('mostrarimagen').innerHTML = `<img src='${reader.result}'>`
-    };
-    reader.onerror = function (error) {
-      console.log('Error: ', error);
-    };
- }
