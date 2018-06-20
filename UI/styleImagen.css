@@ -1,0 +1,14 @@
+#listaimagenes .imagenesDisplay{
+    height : 150px;
+    width : 300px;
+}
+
+#listaimagenes .imagenesListadas{
+    margin: 10px;
+    float: left;
+}
+.ButtonPos{
+    position: relative;
+    left: -52px;
+    top: -6px;
+}

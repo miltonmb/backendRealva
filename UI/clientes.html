@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="style.css">
     <script src="backend.js"></script>
     <script type="test.js"></script>
-</body>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="firebase.js"></script>
+    </body>
 </head>
 
 <body>
@@ -24,11 +26,21 @@
             </a>
         </span>
         <ul class="navbar-nav">
-          <li><a href="index.html">Carrusel Principal</a></li>
-          <li><a href="ofertas.html">Carrusel de Ofertas</a></li>
-          <li><a href="descargas.html">Descargas</a></li>
-          <li><a href="#">Clientes</a></li>
-          <li><a href="productos.html">Productos</a></li>
+            <li>
+                <a href="index.html">Carrusel Principal</a>
+            </li>
+            <li>
+                <a href="ofertas.html">Carrusel de Ofertas</a>
+            </li>
+            <li>
+                <a href="descargas.html">Descargas</a>
+            </li>
+            <li>
+                <a href="#">Clientes</a>
+            </li>
+            <li>
+                <a href="productos.html">Productos</a>
+            </li>
         </ul>
     </nav>
 
@@ -41,7 +53,75 @@
         <a href="productos.html">Productos</a>
     </div>
     <div id="main">
-        <h1 >Clientes</h1>
+        <h1>Clientes</h1>
+        <div>
+            <table id="clientTable">
+                <thead>
+                    <tr>
+                        <th>
+                            Clave Cliente
+                        </th>
+                        <th>
+                            Nombre Empresa
+                        </th>
+                        <th>
+                            Nombre Representante
+                        </th>
+                        <th>
+                            RTN
+                        </th>
+                        <th>
+                            Estatus
+                        </th>
+                        <th>
+                            Telefono 1
+                        </th>
+                        <th>
+                            Telefono 2
+                        </th>
+                        <th>
+                            Correo
+                        </th>
+                        <th>
+                            Contraseña
+                        </th>
+                        <th>
+                            Clasificacion
+                        </th>
+                        <th>
+                            Saldo
+                        </th>
+                        <th>
+                            Direccion
+                        </th>
+                        <th>
+                        </th>
+                        <th>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="clientRows">
+
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <div>
+                <button onclick="chargePrevPage()"></button>
+            </div>
+            <div id="htmlPaginaActual">
+                <p>Pagina Actual</p>
+            </div>
+            <div>
+                <button onclick="chargeNextPage()"></button>
+            </div>
+        </div>
+        <div>
+            <div id="mostrarimagen">
+            </div>
+            <input type="file" accept="image/*" id="imagen" onchange="handleFileInput()">
+            <button onclick='uploadImage()'>Subir</button>
+        </div>
     </div>
 </body>
 
