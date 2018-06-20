@@ -16,7 +16,7 @@ function chargeImage() {
     let element;
     for (let i = 0; i < imagen.length; i++) {
         element = imagen[i];
-        prueba += `<div class='imagenesListadas'><img src='${imagen[i].imagen}' class='imagenesDisplay'><button class='ButtonPos' id='${imagen[i].id}' onclick=onDelete(this.id)>Borrar</button></div>`;
+        prueba += `<div class='imagenesListadas'><a href='${imagen[i].imagen}'class='pDisplay'>Documento</a><button class='ButtonPos2' id='${imagen[i].id}' onclick=onDelete(this.id)>Borrar</button></div>`;
     }
     document.getElementById('listaimagenes').innerHTML = prueba;
 }
@@ -24,7 +24,7 @@ function uploadFile() {
     if (selectedfile == null) {
 
     } else {
-        const newImage = firebase.database().ref('/imagenesPrincipal').push();
+        const newImage = firebase.database().ref('/descargas').push();
         newImage.set({
             id: newImage.key,
             imagen: selectedfile
@@ -36,7 +36,7 @@ function uploadFile() {
 }
 function getImage() {
     imagen = [];
-    firebase.database().ref('imagenesPrincipal').once('value', function (snapshot) {
+    firebase.database().ref('descargas').once('value', function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
             imagen.push(childSnapshot.val());
         });
@@ -44,7 +44,7 @@ function getImage() {
     });
 }
 function handleFileInput() {
-    var files = document.getElementById('imagenesPrincipal').files;
+    var files = document.getElementById('archivosDescarga').files;
     if (files.length > 0) {
         getBase64(files[0]);
     }
@@ -64,7 +64,7 @@ function getBase64(file) {
 
 function onDelete(id){
     console.log(id);
-    firebase.database().ref('/imagenesPrincipal/'+id).remove();
+    firebase.database().ref('/descargas/'+id).remove();
     getImage();
     alert("Se elimino con éxito!");
 }

@@ -54,7 +54,7 @@
     </div>
     <div id="main">
         <h1>Clientes</h1>
-        <div>
+        <div id="tabla">
             <table id="clientTable">
                 <thead>
                     <tr>
@@ -74,10 +74,10 @@
                             Estatus
                         </th>
                         <th>
-                            Telefono 1
+                            Teléfono
                         </th>
                         <th>
-                            Telefono 2
+                            Celular
                         </th>
                         <th>
                             Correo
@@ -86,13 +86,13 @@
                             Contraseña
                         </th>
                         <th>
-                            Clasificacion
+                            Clasificación
                         </th>
                         <th>
                             Saldo
                         </th>
                         <th>
-                            Direccion
+                            Dirección
                         </th>
                         <th>
                         </th>
@@ -105,22 +105,16 @@
                 </tbody>
             </table>
         </div>
-        <div>
-            <div>
-                <button onclick="chargePrevPage()"></button>
+        <div id="paginacion">
+            <div class="paginacionElm">
+                <button onclick="chargePrevPage()">Anterior</button>
             </div>
-            <div id="htmlPaginaActual">
+            <div id="htmlPaginaActual" class="paginacionElm">
                 <p>Pagina Actual</p>
             </div>
-            <div>
-                <button onclick="chargeNextPage()"></button>
+            <div class="paginacionElm">
+                <button onclick="chargeNextPage()">Siguiente</button>
             </div>
-        </div>
-        <div>
-            <div id="mostrarimagen">
-            </div>
-            <input type="file" accept="image/*" id="imagen" onchange="handleFileInput()">
-            <button onclick='uploadImage()'>Subir</button>
         </div>
     </div>
 </body>

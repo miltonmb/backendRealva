@@ -7,8 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Backend</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleImagen.css">
+    <script src="jquery-3.3.1.min.js"></script>
     <script src="backend.js"></script>
-    <script type="test.js"></script>
+    <script src="test.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="firebaseDescargas.js"></script>
 </body>
 </head>
 
@@ -51,16 +55,18 @@
         <a href="productos.html">Productos</a>
     </div>
     <div id="main">
-        <h1>Archivos de descargas</h1>
+        <h1>Descargas</h1>
         <div>
-            <form action="https://realva.000webhostapp.com/server/uploadDescargas.php" method="post" enctype="multipart/form-data">
-                <h2>Subir archivos para la zona de descargas</h2>
-                <label for="fileSelect">Imagen:</label>
-                <input type="file" name="Filedata" id="fileSelect">
-                <input type="submit" name="submit" value="Subir">
-                <p>
-                    <strong>Nota:</strong>Subir cualquier archivo</p>
-            </form>
+            <h2>Subir archivos para la zona de descargas</h2>
+            <div>
+                <div id="mostrarimagen">
+                </div>
+                <input type="file"  id="archivosDescarga" onchange="handleFileInput()">
+                <button onclick='uploadFile()'>Subir</button>
+            </div>
+        </div>
+        <div>
+            <div id="listaimagenes"></div>
         </div>
     </div>
 </body>
