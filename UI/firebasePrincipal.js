@@ -16,7 +16,7 @@ function chargeImage() {
     let element;
     for (let i = 0; i < imagen.length; i++) {
         element = imagen[i];
-        prueba += `<div><div><img src='${imagen[i].imagen}' class='imagenesDisplay'></div><div><button>hola</button><div></div>`;
+        prueba += `<div class='imagenesListadas'><img src='${imagen[i].imagen}' class='imagenesDisplay'><button class='ButtonPos' id='${imagen[i].id}' onclick=onDelete(this.id)>Borrar</button></div>`;
     }
     document.getElementById('listaimagenes').innerHTML = prueba;
 }
@@ -29,11 +29,13 @@ function uploadFile() {
             id: newImage.key,
             imagen: selectedfile
         });
+        getImage();
     }
+    
 }
 function getImage() {
     imagen = [];
-    firebase.database().ref('imagenesPrincipal').on('value', function (snapshot) {
+    firebase.database().ref('imagenesPrincipal').once('value', function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
             imagen.push(childSnapshot.val());
         });
@@ -51,9 +53,18 @@ function getBase64(file) {
     reader.readAsDataURL(file);
     reader.onload = function () {
         selectedfile = reader.result;
-        document.getElementById('mostrarimagen').innerHTML = `<img src='${reader.result}'>`
+        //document.getElementById('mostrarimagen').innerHTML = `<img src='${reader.result}'>;
+
     };
     reader.onerror = function (error) {
         console.log('Error: ', error);
     };
 }
+
+function onDelete(id){
+    console.log(id);
+    firebase.database().ref('/imagenesOfertas/'+id).remove();
+    getImage();
+    alert("Se elimino con éxito!");
+}
+

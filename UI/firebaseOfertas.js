@@ -1,5 +1,6 @@
 var selectedfile;
 var imagen = [];
+var imageRef;
 var config = {
     apiKey: "AIzaSyBZAKqZfYiuQDTF-pDtZsxlO5X72wNFA1Q",
     authDomain: "realva-54c4a.firebaseapp.com",
@@ -13,15 +14,21 @@ window.onload = function () {
     getImage();
 }
 function uploadFile() {
-    const newImage = firebase.database().ref('/imagenes').push();
-    newImage.set({
-        id: newImage.key,
-        imagen: selectedfile
-    });
+    if (selectedfile == null) {
+
+    } else {
+        const newImage = firebase.database().ref('/imagenesOfertas').push();
+        newImage.set({
+            id: newImage.key,
+            imagen: selectedfile
+        });
+        getImage();
+        alert("Se agrego con éxito!");
+    }
 }
 function getImage() {
     imagen = [];
-    firebase.database().ref('imagenesOfertas').on('value', function (snapshot) {
+    firebase.database().ref('imagenesOfertas').once('value', function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
             imagen.push(childSnapshot.val());
         });
@@ -29,11 +36,12 @@ function getImage() {
     });
 }
 function chargeImage() {
-    let prueba = '';
+    let prueba = ' ';
+    document.getElementById('listaimagenes').innerHTML = prueba;
     let element;
     for (let i = 0; i < imagen.length; i++) {
         element = imagen[i];
-        prueba += `<div><div><img src='${imagen[i].imagen}' class='imagenesDisplay'></div><div><button>hola</button><div></div>`;
+        prueba += `<div class='imagenesListadas'><img src='${imagen[i].imagen}' class='imagenesDisplay'><button class='ButtonPos' id='${imagen[i].id}' onclick=onDelete(this.id)>Borrar</button></div>`;
     }
     document.getElementById('listaimagenes').innerHTML = prueba;
 }
@@ -48,9 +56,17 @@ function getBase64(file) {
     reader.readAsDataURL(file);
     reader.onload = function () {
         selectedfile = reader.result;
-        document.getElementById('mostrarimagen').innerHTML = `<img src='${reader.result}'>`
+        //document.getElementById('mostrarimagen').innerHTML = `<img src='${reader.result}' class='imagenesDisplay'>`
     };
     reader.onerror = function (error) {
         console.log('Error: ', error);
     };
+}
+
+
+function onDelete(id){
+    console.log(id);
+    firebase.database().ref('/imagenesOfertas/'+id).remove();
+    getImage();
+    alert("Se elimino con éxito!");
 }
