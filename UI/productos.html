@@ -7,8 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Backend</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleImagen.css">
+    <link rel="stylesheet" href="styleProducto.css">
+    <script src="jquery-3.3.1.min.js"></script>
     <script src="backend.js"></script>
     <script type="test.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="firebaseOfertas.js"></script>
 </body>
 </head>
 
@@ -40,9 +45,54 @@
         <a href="clientes.html" >Clientes</a>
         <a href="" onclick="closeSlideMenu()">Productos</a>
     </div>
+
     <div id="main">
-        <h1 >Productos</h1>
+        <h1>Productos</h1>
+        <div>
+            <h2>Subir archivos para el catalogo de productos</h2>
+            <div>
+                <div id="mostrarimagen">
+                </div>
+                <input type="file" accept="image/*" id="imagenesProducto" onchange="handleFileInput()">
+                <form id="formularioProducto">
+                    <div>
+                        <label for="nombreProducto" id="lbNmProducto">Nombre Producto: </label>
+                        <input type="text" id="nombreProducto">
+                    </div>
+                    <div>
+                        <label for="precioProducto" id="lbPrecio">Precio: </label>
+                        <input type="text" id="precioProducto" required="required" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" >
+                    </div>
+                    <div>
+                        <label for="descripcion" id="lbDescripcion">Descripcion: </label>
+                        <textarea id="descripcion" required="required"></textarea>
+                    </div>                    
+                    <div>
+                        <label for="indicaciones" id="lbIndicaciones">Indicaciones: </label>
+                        <textarea id="indicaciones"></textarea>
+                    </div>
+                    <div>
+                        <label for="contraIndicaciones" id="lbcontraIndicaciones">Contra indicaciones: </label>
+                        <textarea id="contraIndicaciones"></textarea>
+                    </div>
+                    <div>
+                        <label for="uso" id="lbUso">Tipo de uso: </label>
+                        <input type="text" id="uso" required="required">
+                    </div>
+                    <div>
+                        <label for="dosis" id="lbDosis">Dosis: </label>
+                        <input type="text" id="dosis" required="required">
+                    </div>
+
+                </form>
+                <button onclick='uploadFile()'>Subir</button>
+            </div>
+        </div>
+        <div>
+            <div id="listaImagenesProducto"></div>
+        </div>
     </div>
+
 </body>
 
 </html>

@@ -1,0 +1,35 @@
+#formularioProducto{
+    margin: 0;
+    min-width: 180px;
+    width : 45%;
+    height: 100%;
+    padding: 2px;
+    border: 1px solid #CCC;
+}
+
+label{
+    margin-left: 5px;
+}
+
+div{
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+#nombreProducto{
+    margin-left: 2%;
+}
+
+#imagenesProducto{
+    margin-bottom: 8px;
+}
+
+#uso{
+    margin-left: 2%;
+}
+
+textarea{
+    margin-left: 5px;
+    width: 95%;
+    height: 70px;
+}
