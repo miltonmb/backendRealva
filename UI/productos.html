@@ -7,10 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Backend</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
-    <script src="productos.js"></script>
     <script src="backend.js"></script>
-    <script type="test.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="productos.js"></script>
     </body>
 </head>
 
@@ -54,96 +53,77 @@
     </div>
     <div id="main">
         <h1>Productos</h1>
-        <form id="myForm" onsubmit="return submitOrder()" method="post">
-            Clave
-            <br>
-            <input type="text" name="product_code">
-            <br>
-            Nombre:
-            <br>
-            <input type="text" name="product_name">
-            <br>
-            Presentación
-            <br>
-            <input type="text" name="product_dosis">
-            <br> 
-            Descripción:
-            <br>
-            <textarea name="product_description" form="myForm"></textarea>
-            <br> 
-            Indicaciones:
-            <br>
-            <textarea name="product_indications" form="myForm"></textarea>
-            <br> 
-            Contraindicaciones:
-            <br>
-            <textarea name="product_contraindication" form="myForm"></textarea>
-            <br>
-            Categoría
-            <br>
-            <input list="product_categ_list" id="product_categ">
-            <datalist id="product_categ_list">
-                <option value="BIOLOGICOS">
-                <option value="ANTIINFLAMATORIO">
-                <option value="ANTIBIOTICO">
-                <option value="ANTIDOTO">
-                <option value="ANABOLICO">
-                <option value="ANESTESICOS Y EUTANASICOS">
-                <option value="VITAMINAS Y MINERALES">
-                <option value="ANTIPARASITARIO">
-                <option value="OTICOS Y OFTALMICOS">
-                <option value="ANTISEPTICO Y DESINFECTANTE">
-                <option value="DERMATOLOGICOS">
-                <option value="GASTROINTESTINALES">
-                <option value="COSMETICO">
-                <option value="IDENTIFICACION Y ACCESORIOS">
-                <option value="ANTIHEMORRAGICOS">
-                <option value="HORMONALES">
-            </datalist> 
-            <br>
-            Tipo de producto y uso
-            <br>
-            <textarea name="product_type_use" form="myForm"></textarea>
-            <br>
-            Unidad técnica
-            <br>
-            <input list="product_unidTec_list" id="product_unidTec">
-            <datalist id="product_unidTec_list">
-                <option value="ANIMALES DE PRODUCCION">
-                <option value="ANIMALES DE COMPAÑÍA">
-            </datalist>
-            <br>
-            Especies
-            <br>
-            <input list="product_species_list" id="product_species">
-            <datalist id="product_species_list">
-                <option value="CANINOS">
-                <option value="BOVINOS">
-                <option value="EQUINOS">
-                <option value="OVINOS">
-                <option value="CAPRINOS">
-                <option value="FELINOS">
-                <option value="ZORROS">
-                <option value="HURONES">
-                <option value="TODAS ESPECIES">
-                <option value="PORCINOS">
-                <option value="CONEJOS">
-                <option value="AVES DE ENGORDE">
-                <option value="AVES DE POSTURA">
-                <option value="AVES DE TRASPATIO">
-                <option value="PAVOS">
-                <option value="GALLOS DE PELEA">
-                <option value="AVES">
-            </datalist>
-            <br>
-            Precio
-            <br>
-            Lps.<input type="number" id="product_price" min="0.01" step="0.01" value="0.00" />
-            <br>
-            <input type="file" accept="image/*" id="imagenProducto" onchange="handleFileInput()">
-            <br>
-            <input type="submit">
-            <br>
+        <form id="myForm">
+            <div id="productosTop">
+                Clave
+                <input type="text" name="product_code"> Nombre:
+                <input type="text" name="product_name"> Presentación
+                <input type="text" name="product_dosis">
+
+            </div>
+            <div id="productosMiddle1">
+                Descripción:
+                <textarea name="product_description" form="myForm"></textarea> Indicaciones:
+                <textarea name="product_indications" form="myForm"></textarea> Contraindicaciones:
+                <textarea name="product_contraindication" form="myForm"></textarea>
+            </div>
+            <div id="productoMiddle2">
+                Categoría
+                <input list="product_categ_list" id="product_categ">
+                <datalist id="product_categ_list">
+                    <option value="BIOLOGICOS">
+                    <option value="ANTIINFLAMATORIO">
+                    <option value="ANTIBIOTICO">
+                    <option value="ANTIDOTO">
+                    <option value="ANABOLICO">
+                    <option value="ANESTESICOS Y EUTANASICOS">
+                    <option value="VITAMINAS Y MINERALES">
+                    <option value="ANTIPARASITARIO">
+                    <option value="OTICOS Y OFTALMICOS">
+                    <option value="ANTISEPTICO Y DESINFECTANTE">
+                    <option value="DERMATOLOGICOS">
+                    <option value="GASTROINTESTINALES">
+                    <option value="COSMETICO">
+                    <option value="IDENTIFICACION Y ACCESORIOS">
+                    <option value="ANTIHEMORRAGICOS">
+                    <option value="HORMONALES">
+                </datalist>
+                Tipo de producto y uso
+                <textarea name="product_type_use" form="myForm"></textarea> Unidad técnica
+                <input list="product_unidTec_list" id="product_unidTec">
+                <datalist id="product_unidTec_list">
+                    <option value="ANIMALES DE PRODUCCION">
+                        <option value="ANIMALES DE COMPAÑÍA">
+                </datalist>
+                Especies
+                <input list="product_species_list" id="product_species">
+                <datalist id="product_species_list">
+                    <option value="CANINOS">
+                    <option value="BOVINOS">
+                    <option value="EQUINOS">
+                    <option value="OVINOS">
+                    <option value="CAPRINOS">
+                    <option value="FELINOS">
+                    <option value="ZORROS">
+                    <option value="HURONES">
+                    <option value="TODAS ESPECIES">
+                    <option value="PORCINOS">
+                    <option value="CONEJOS">
+                    <option value="AVES DE ENGORDE">
+                    <option value="AVES DE POSTURA">
+                    <option value="AVES DE TRASPATIO">
+                    <option value="PAVOS">
+                    <option value="GALLOS DE PELEA">
+                    <option value="AVES">
+                </datalist>
+            </div>
+            <div id="productosBottom">
+                Precio Lps.
+                <input type="number" id="product_price" min="0.01" step="0.01" value="0.00" />
+                <input type="file" accept="image/*" id="imagenProducto" onchange="handleFileInput()">
+                <button onclick='submitOrder()'>Subir</button>
+
+            </div>
         </form>
 
     </div>
