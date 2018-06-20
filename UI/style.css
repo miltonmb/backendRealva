@@ -87,3 +87,24 @@ body {
         display: none;
     }
 }
+
+#paginacion .paginacionElm{
+    margin: 10px;
+    float: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 90%;
+}
+tr:nth-child(even) {
+    background-color: #8e8e8e;
+}
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+th, td {
+    text-align: left;
+    padding: 5px;
+}
