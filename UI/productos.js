@@ -92,18 +92,17 @@ function submitOrder() {
         const newProduct = firebase.database().ref('/productos').push();
         newProduct.set({
             imagen: selectedfile,
-            //id: newProduct.key,
-            code: inCode,
-            name: inName,
-            description: inDescription,
-            indications: inIndications,
-            contraindication: inContraindication,
+            codigo: inCode,
+            nombre: inName,
+            descripcion: inDescription,
+            indicacion: inIndications,
+            contraindicacion: inContraindication,
             dosis: inDosis,
             categ: inCateg,
-            typeUse: inTypeUse,
+            tipoUso: inTypeUse,
             unidTec: inUnidTec,
-            species: inSpecies,
-            price: inPrice,
+            especie: inSpecies,
+            precio: inPrice,
         });
         alert("Se agrego con éxito!");
     }
