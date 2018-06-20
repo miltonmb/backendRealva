@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=devide-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Backend</title>
+    <link rel="stylesheet" href="styleProducto.css">
     <link rel="stylesheet" href="style.css">
     <script src="backend.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script src="productos.js"></script>
+
     </body>
 </head>
 
@@ -49,6 +51,7 @@
         <a href="ofertas.html">Carrusel de ofertas</a>
         <a href="descargas.html">Descargas</a>
         <a href="clientes.html">Clientes</a>
+
         <a href="" onclick="closeSlideMenu()">Productos</a>
     </div>
     <div id="main">
@@ -56,19 +59,21 @@
         <form id="myForm">
             <div id="productosTop">
                 Clave
-                <input type="text" name="product_code"> Nombre:
-                <input type="text" name="product_name"> Presentación
-                <input type="text" name="product_dosis">
+                <input type="text" name="product_code" id="codigo"> Nombre:
+                <input type="text" name="product_name" id="nombre"> Presentación
+                <input type="text" name="product_dosis" id="dosis">
 
             </div>
             <div id="productosMiddle1">
-                Descripción:
-                <textarea name="product_description" form="myForm"></textarea> Indicaciones:
-                <textarea name="product_indications" form="myForm"></textarea> Contraindicaciones:
-                <textarea name="product_contraindication" form="myForm"></textarea>
+                <label>Descripción:</label>
+                <textarea id="descripcion" name="product_description" form="myForm"></textarea>
+                <label>Indicaciones:</label>
+                <textarea id="indicaciones" name="product_indications" form="myForm"></textarea> 
+                <label>Contraindicaciones:</label>
+                <textarea id="contraIndicaciones" name="product_contraindication" form="myForm"></textarea>
             </div>
             <div id="productoMiddle2">
-                Categoría
+                <label>Categoría</label>
                 <input list="product_categ_list" id="product_categ">
                 <datalist id="product_categ_list">
                     <option value="BIOLOGICOS">
@@ -88,14 +93,15 @@
                     <option value="ANTIHEMORRAGICOS">
                     <option value="HORMONALES">
                 </datalist>
-                Tipo de producto y uso
-                <textarea name="product_type_use" form="myForm"></textarea> Unidad técnica
+                <label>Tipo de producto y uso</label>
+                <textarea id="typeUse" name="product_type_use" form="myForm"></textarea> 
+                <label>Unidad técnica</label>
                 <input list="product_unidTec_list" id="product_unidTec">
                 <datalist id="product_unidTec_list">
                     <option value="ANIMALES DE PRODUCCION">
-                        <option value="ANIMALES DE COMPAÑÍA">
+                    <option value="ANIMALES DE COMPAÑÍA">
                 </datalist>
-                Especies
+                <label>Especies</label>
                 <input list="product_species_list" id="product_species">
                 <datalist id="product_species_list">
                     <option value="CANINOS">
@@ -118,10 +124,10 @@
                 </datalist>
             </div>
             <div id="productosBottom">
-                Precio Lps.
+                <label>Precio Lps.</label>
                 <input type="number" id="product_price" min="0.01" step="0.01" value="0.00" />
                 <input type="file" accept="image/*" id="imagenProducto" onchange="handleFileInput()">
-                <button onclick='submitOrder()'>Subir</button>
+                <button id="btnSubir" onclick='submitOrder()'>Subir</button>
 
             </div>
         </form>

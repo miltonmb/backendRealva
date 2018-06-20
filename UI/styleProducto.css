@@ -1,0 +1,39 @@
+#main{
+    background-color: green;
+    color: white;
+}
+
+#productosTop, #productosMiddle1, #productoMiddle2, #productosBottom{
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+
+#codigo, #nombre, #dosis {
+    min-width: 60px;
+    margin-bottom: 15px; 
+}
+
+#descripcion, #indicaciones, #contraIndicaciones{
+    min-height: 50px;
+    min-width: 40px;
+}
+
+#product_categ, product_unidTec, #product_species{
+    margin-top: 8px;
+    margin-bottom: 10px;
+}
+
+#btnSubir{
+    padding: 10px 12px 14px 14px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#imagenProducto{
+    font-size: 18px;
+}
+
+#product_unidTec{
+    margin: 12px;
+}
