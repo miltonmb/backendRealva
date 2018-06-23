@@ -71,7 +71,7 @@ function chargePrevPage() {
     }
 }
 function updatePaginaActual() {
-    prueba = 'Pagina Actual: ' + paginaactual;
+    prueba = 'Página Actual: ' + paginaactual;
     document.getElementById('htmlPaginaActual').innerHTML = prueba;
 }
 
