@@ -55,66 +55,40 @@
     <div id="main">
         <h1>Clientes</h1>
         <div id="tabla">
-            <table id="clientTable">
+            <table class="blueTable">
                 <thead>
                     <tr>
-                        <th>
-                            Clave Cliente
-                        </th>
-                        <th>
-                            Nombre Empresa
-                        </th>
-                        <th>
-                            Nombre Representante
-                        </th>
-                        <th>
-                            RTN
-                        </th>
-                        <th>
-                            Estatus
-                        </th>
-                        <th>
-                            Teléfono
-                        </th>
-                        <th>
-                            Celular
-                        </th>
-                        <th>
-                            Correo
-                        </th>
-                        <th>
-                            Contraseña
-                        </th>
-                        <th>
-                            Clasificación
-                        </th>
-                        <th>
-                            Saldo
-                        </th>
-                        <th>
-                            Dirección
-                        </th>
-                        <th>
-                        </th>
-                        <th>
-                        </th>
+                        <th>Clave Cliente</th>
+                        <th>Nombre Empresa</th>
+                        <th>Nombre Representante</th>
+                        <th>RTN</th>
+                        <th>Estatus</th>
+                        <th>Tel&eacute;fono</th>
+                        <th>Celular</th>
+                        <th>Correo</th>
+                        <th>Contrase&ntilde;a</th>
+                        <th>Clasificaci&oacute;n</th>
+                        <th>Saldo</th>
+                        <th>Direcci&oacute;n</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
                     </tr>
                 </thead>
-                <tbody id="clientRows">
-
-                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">
+                            <div class="links">
+                                <button onclick="chargePrevPage()">Anterior</button>
+                                <div id="htmlPaginaActual" class="paginacionElm">
+                                    <p>Página Actual</p>
+                                </div>
+                                <button onclick="chargeNextPage()">Siguiente</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+                <tbody id="clientRows"></tbody>
             </table>
-        </div>
-        <div id="paginacion">
-            <div class="paginacionElm">
-                <button onclick="chargePrevPage()">Anterior</button>
-            </div>
-            <div id="htmlPaginaActual" class="paginacionElm">
-                <p>Pagina Actual</p>
-            </div>
-            <div class="paginacionElm">
-                <button onclick="chargeNextPage()">Siguiente</button>
-            </div>
         </div>
     </div>
 </body>
