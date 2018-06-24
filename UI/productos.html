@@ -58,25 +58,37 @@
         <h1>Productos</h1>
         <form id="myForm">
             <div id="productosTop">
-                <label>Clave</label>
-                <input type="text" name="product_code" id="codigo"> 
-                <label id="lbNombre">Nombre:</label>
-                <input type="text" name="product_name" id="nombre"> 
+                <span>
+                    <label>Clave:</label>
+                    <input type="text" name="product_code" id="codigo"> 
+                </span>
+                <span>
+                    <label id="lbNombre">Nombre:</label>
+                    <input type="text" name="product_name" id="nombre">
+                </span> 
             </div>
             <div id="productosMiddle1">
-                <label>Presentación</label>
-                <input type="text" name="product_dosis" id="dosis">
-                <label>Descripción:</label>
-                <textarea id="descripcion" name="product_description" form="myForm"></textarea>
-                
+                <span>
+                    <label>Presentación</label>
+                    <input type="text" name="product_dosis" id="dosis">
+                </span>
+                <span>
+                    <label>Descripción:</label>
+                    <textarea id="descripcion" name="product_description" form="myForm"></textarea>
+                </span>     
             </div>
             <div id="productoMiddle2">
-                <label>Indicaciones:</label>
-                <textarea id="indicaciones" name="product_indications" form="myForm"></textarea>     
-                <label>Contraindicaciones:</label>
-                <textarea id="contraIndicaciones" name="product_contraindication" form="myForm"></textarea>
+                <span>
+                    <label>Indicaciones:</label>
+                    <textarea id="indicaciones" name="product_indications" form="myForm"></textarea>     
+                </span>
+                <span>
+                    <label>Contraindicaciones:</label>
+                    <textarea id="contraIndicaciones" name="product_contraindication" form="myForm"></textarea>
+                </span>
             </div>
             <div id="productoMiddle3">
+                <span>
                     <label>Categoría</label>
                     <input list="product_categ_list" id="product_categ">
                     <datalist id="product_categ_list">
@@ -97,44 +109,53 @@
                         <option value="ANTIHEMORRAGICOS">
                         <option value="HORMONALES">
                     </datalist>
+                </span>
+                <span>
                     <label>Tipo de producto y uso</label>
                     <textarea id="typeUse" name="product_type_use" form="myForm"></textarea> 
+                </span>
             </div>
             <div id="productoMiddle4">
+                <span>
                     <label>Unidad técnica</label>
                     <input list="product_unidTec_list" id="product_unidTec">
                     <datalist id="product_unidTec_list">
                         <option value="ANIMALES DE PRODUCCION">
                         <option value="ANIMALES DE COMPAÑÍA">
                     </datalist>
+                </span>
+                <span>
                     <label>Especies</label>
-                    <input list="product_species_list" id="product_species">
-                    <datalist id="product_species_list">
-                        <option value="CANINOS">
-                        <option value="BOVINOS">
-                        <option value="EQUINOS">
-                        <option value="OVINOS">
-                        <option value="CAPRINOS">
-                        <option value="FELINOS">
-                        <option value="ZORROS">
-                        <option value="HURONES">
-                        <option value="TODAS ESPECIES">
-                        <option value="PORCINOS">
-                        <option value="CONEJOS">
-                        <option value="AVES DE ENGORDE">
-                        <option value="AVES DE POSTURA">
-                        <option value="AVES DE TRASPATIO">
-                        <option value="PAVOS">
-                        <option value="GALLOS DE PELEA">
-                        <option value="AVES">
-                    </datalist>
+                    <select id="product_species_list" multiple>
+                        <option value="CANINOS">CANINOS</option>
+                        <option value="BOVINOS">BOVINOS</option>
+                        <option value="EQUINOS">EQUINOS</option>
+                        <option value="OVINOS">OVINOS</option>
+                        <option value="CAPRINOS">CAPRINOS</option>
+                        <option value="FELINOS">FELINOS</option>
+                        <option value="ZORROS">ZORROS</option>
+                        <option value="HURONES">HURONES</option>
+                        <option value="TODAS ESPECIES">TODA ESPECIE</option>
+                        <option value="PORCINOS">PORCINOS</option>
+                        <option value="CONEJOS">CONEJOS</option>
+                        <option value="AVES DE ENGORDE">AVES DE ENGORDE</option>
+                        <option value="AVES DE POSTURA">AVES DE POSTURA</option>
+                        <option value="AVES DE TRASPATIO">AVES DE TRASPATIO</option>
+                        <option value="PAVOS">PAVOS</option>
+                        <option value="GALLOS DE PELEA">GALLOS DE PELEA</option>
+                        <option value="AVES">AVES</option>
+                    </select>
+                </span>
             </div>
             <div id="productosBottom">
-                <label>Precio Lps.</label>
-                <input type="number" id="product_price" min="0.01" step="0.01" value="0.00" />
-                <input type="file" accept="image/*" id="imagenProducto" onchange="handleFileInput()">
-                <button id="btnSubir" onclick='submitOrder()'>Subir</button>
-
+                <span>
+                    <label>Precio Lps.</label>
+                    <input type="number" id="product_price" min="0.01" step="0.01" value="0.00" />
+                </span>
+                <span>
+                    <input type="file" accept="image/*" id="imagenProducto" onchange="handleFileInput()">
+                    <button id="btnSubir" onclick='submitOrder()'>Subir</button>
+                </span>
             </div>
         </form>
 
