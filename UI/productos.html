@@ -11,6 +11,7 @@
     <script src="backend.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script src="productos.js"></script>
+    <script src="cargarProductos.js"></script>
 
     </body>
 </head>
@@ -60,12 +61,12 @@
             <div id="productosTop">
                 <span>
                     <label>Clave:</label>
-                    <input type="text" name="product_code" id="codigo"> 
+                    <input type="text" name="product_code" id="codigo">
                 </span>
                 <span>
                     <label id="lbNombre">Nombre:</label>
                     <input type="text" name="product_name" id="nombre">
-                </span> 
+                </span>
             </div>
             <div id="productosMiddle1">
                 <span>
@@ -75,12 +76,12 @@
                 <span>
                     <label>Descripción:</label>
                     <textarea id="descripcion" name="product_description" form="myForm"></textarea>
-                </span>     
+                </span>
             </div>
             <div id="productoMiddle2">
                 <span>
                     <label>Indicaciones:</label>
-                    <textarea id="indicaciones" name="product_indications" form="myForm"></textarea>     
+                    <textarea id="indicaciones" name="product_indications" form="myForm"></textarea>
                 </span>
                 <span>
                     <label>Contraindicaciones:</label>
@@ -93,26 +94,26 @@
                     <input list="product_categ_list" id="product_categ">
                     <datalist id="product_categ_list">
                         <option value="BIOLOGICOS">
-                        <option value="ANTIINFLAMATORIO">
-                        <option value="ANTIBIOTICO">
-                        <option value="ANTIDOTO">
-                        <option value="ANABOLICO">
-                        <option value="ANESTESICOS Y EUTANASICOS">
-                        <option value="VITAMINAS Y MINERALES">
-                        <option value="ANTIPARASITARIO">
-                        <option value="OTICOS Y OFTALMICOS">
-                        <option value="ANTISEPTICO Y DESINFECTANTE">
-                        <option value="DERMATOLOGICOS">
-                        <option value="GASTROINTESTINALES">
-                        <option value="COSMETICO">
-                        <option value="IDENTIFICACION Y ACCESORIOS">
-                        <option value="ANTIHEMORRAGICOS">
-                        <option value="HORMONALES">
+                            <option value="ANTIINFLAMATORIO">
+                                <option value="ANTIBIOTICO">
+                                    <option value="ANTIDOTO">
+                                        <option value="ANABOLICO">
+                                            <option value="ANESTESICOS Y EUTANASICOS">
+                                                <option value="VITAMINAS Y MINERALES">
+                                                    <option value="ANTIPARASITARIO">
+                                                        <option value="OTICOS Y OFTALMICOS">
+                                                            <option value="ANTISEPTICO Y DESINFECTANTE">
+                                                                <option value="DERMATOLOGICOS">
+                                                                    <option value="GASTROINTESTINALES">
+                                                                        <option value="COSMETICO">
+                                                                            <option value="IDENTIFICACION Y ACCESORIOS">
+                                                                                <option value="ANTIHEMORRAGICOS">
+                                                                                    <option value="HORMONALES">
                     </datalist>
                 </span>
                 <span>
                     <label>Tipo de producto y uso</label>
-                    <textarea id="typeUse" name="product_type_use" form="myForm"></textarea> 
+                    <textarea id="typeUse" name="product_type_use" form="myForm"></textarea>
                 </span>
             </div>
             <div id="productoMiddle4">
@@ -121,7 +122,7 @@
                     <input list="product_unidTec_list" id="product_unidTec">
                     <datalist id="product_unidTec_list">
                         <option value="ANIMALES DE PRODUCCION">
-                        <option value="ANIMALES DE COMPAÑÍA">
+                            <option value="ANIMALES DE COMPAÑÍA">
                     </datalist>
                 </span>
                 <span>
@@ -158,6 +159,41 @@
                 </span>
             </div>
         </form>
+
+        <div id="tabla">
+            <table class="blueTable">
+                <thead>
+                    <tr>
+                        <th>Clave</th>
+                        <th>Nombre</th>
+                        <th>Presentaci&oacute;n</th>
+                        <th>Descripci&oacute;n</th>
+                        <th>Indicaciones</th>
+                        <th>Contraindicaciones</th>
+                        <th>Categor&iacute;a</th>
+                        <th>Tipo de producto y uso</th>
+                        <th>Unidad t&eacute;cnica</th>
+                        <th>Especies</th>
+                        <th>Precio Lps.</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">
+                            <div class="links">
+                                <button onclick="chargePrevPage()">Anterior</button>
+                                <div id="htmlPaginaActual" class="paginacionElm">
+                                    <p>Página Actual</p>
+                                </div>
+                                <button onclick="chargeNextPage()">Siguiente</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+                <tbody id="productRows"></tbody>
+            </table>
+        </div>
 
     </div>
 </body>
