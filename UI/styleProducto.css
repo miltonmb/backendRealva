@@ -29,33 +29,47 @@ h1{
 }
 
 span{
-    padding-right: 7%;
+    width: 25%;
+    padding-right: 10%;
+    margin-right: 25%;
 }
 
 #productosTop, #productosMiddle1, #productoMiddle2, #productoMiddle3, #productoMiddle4, #productosBottom{
     font-size: 18px;
     font-weight: bold;
-    /*margin-bottom: 5%;*/
+    /*margin-bottom: 5%;
     margin-right: 3%;
     padding-bottom: 5%;
     padding-left: 25%;
     margin: #1a4b9b;
+    */
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
 }
 
 #codigo, #nombre, #dosis {
-    min-width: 60px;
+    min-width: 200px;
+    min-height: 20px;
+    width: 100%;
     /*margin-bottom: 5%;*/ 
 }
 
-#descripcion, #indicaciones, #contraIndicaciones{
-    min-height: 50px;
-    min-width: 40px;
-    height: 50%;
+#descripcion, #indicaciones, #contraIndicaciones, #typeUse{
+    min-height: 100px;
+    min-width: 200px;
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 
-#product_categ, product_unidTec, #product_species{
+#product_categ, #product_unidTec, #product_species, #product_species_list{
+    min-width: 200px;
     margin-top: 8px;
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
 }
 
 #btnSubir{
@@ -75,6 +89,8 @@ label{
 
 #codigo,#nombre,#dosis,#descripcion,#indicaciones,#contraIndicaciones,#product_categ,#typeuse,#producto_unidTec,#producto_species,#product_price{
     margin: 0%;
+    display: flex;
+    align-items: center;
 }
 
 /*mobile*/
@@ -84,9 +100,10 @@ label{
 
 /*tablet*/
 @media only screen and (min-width: 401px) and (max-width: 960px){
-    #page{
+    #productosTop, #productosMiddle1, #productoMiddle2, #productoMiddle3, #productoMiddle4, #productosBottom{
         width: 50%;
     }
+
     
 }
 
@@ -94,5 +111,12 @@ label{
 /*desktop*/
 
 @media only screen and (min-width: 961px){
+    #page{
+        width: 960px;
+        margin: 0 auto;
+    }
+
+ 
+
     
 }
