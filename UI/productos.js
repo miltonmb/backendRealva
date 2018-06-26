@@ -25,7 +25,6 @@ function submitOrder() {
     var inUnidTec = document.forms["myForm"]["product_unidTec"].value;
     var inSpecies = document.forms["myForm"]["product_species_list"].value;
     var inPrice = document.forms["myForm"]["product_price"].value;
-    document.getElementById("btnSubir").reset();
     /*if (inCode == "") {
         alert("Contraindicación Vacia");
         return false;
@@ -107,7 +106,7 @@ function submitOrder() {
         alert("Se agrego con éxito!");
     }
     //'products' is the name of the 'collection' (aka database table)
-
+    document.getElementById("btnSubir").reset();
 };
 
 function handleFileInput() {
