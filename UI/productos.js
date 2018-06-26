@@ -23,7 +23,7 @@ function submitOrder() {
     var inCateg = document.forms["myForm"]["product_categ"].value;
     var inTypeUse = document.forms["myForm"]["product_type_use"].value;
     var inUnidTec = document.forms["myForm"]["product_unidTec"].value;
-    var inSpecies = document.forms["myForm"]["product_species"].value;
+    var inSpecies = document.forms["myForm"]["product_species_list"].value;
     var inPrice = document.forms["myForm"]["product_price"].value;
 
     /*if (inCode == "") {
