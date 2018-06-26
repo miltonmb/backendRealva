@@ -79,7 +79,6 @@ function test(that) {
                     ref.child(childSnapshot.key).remove();
                 });
             });
-            chargeproductos();
     }
 
 }
