@@ -50,6 +50,7 @@ span{
 }
 
 #codigo, #nombre, #dosis {
+    font-size: 18px;
     min-width: 200px;
     min-height: 20px;
     width: 100%;
@@ -57,6 +58,7 @@ span{
 }
 
 #descripcion, #indicaciones, #contraIndicaciones, #typeUse{
+    font-size: 18px;
     min-height: 100px;
     min-width: 200px;
     width: 100%;
@@ -66,6 +68,7 @@ span{
 
 #product_categ, #product_unidTec, #product_species, #product_species_list{
     min-width: 200px;
+    min-height: 20px;
     margin-top: 8px;
     margin-bottom: 10px;
     display: flex;

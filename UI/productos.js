@@ -25,7 +25,7 @@ function submitOrder() {
     var inUnidTec = document.forms["myForm"]["product_unidTec"].value;
     var inSpecies = document.forms["myForm"]["product_species_list"].value;
     var inPrice = document.forms["myForm"]["product_price"].value;
-
+    document.getElementById("btnSubir").reset();
     /*if (inCode == "") {
         alert("Contraindicación Vacia");
         return false;
