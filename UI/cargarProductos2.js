@@ -22,10 +22,10 @@ function chargeNextPage() {
     let prueba = '';
     let cont = 0;
     let element;
-    if (paginaactual < (producto.length / 10) - 1) {
+    if (paginaactual < (producto.length / 8) - 1) {
         paginaactual++;
-        for (let i = paginaactual * 10; i < producto.length; i++) {
-            if (cont < 10) {
+        for (let i = paginaactual * 8; i < producto.length; i++) {
+            if (cont < 8) {
                 element = producto[i];
                 prueba += `<div class="card col-md">
                 <div class="card-body">
@@ -49,7 +49,7 @@ function chargeFirstPage() {
     let prueba = '';
     let cont = 0;
     producto.forEach(element => {
-        if (cont < 10) {
+        if (cont < 8) {
             prueba += `<div class="card col-md">
             <div class="card-body">
                 <h5 class="card-title">${element.nombre}</h5>
@@ -73,8 +73,8 @@ function chargePrevPage() {
     let element;
     if (paginaactual > 0) {
         paginaactual--;
-        for (let i = paginaactual * 10; i < producto.length; i++) {
-            if (cont < 10) {
+        for (let i = paginaactual * 8; i < producto.length; i++) {
+            if (cont < 8) {
                 element = producto[i];
                 prueba += `<div class="card col-md">
                 <div class="card-body">
@@ -100,15 +100,14 @@ function updatePaginaActual() {
 }
 
 function eliminar(that) {
-    console.log(that.id);
     if (confirm("Eliminar?")) {
-        console.log(that.innerHTML);
-        ref.orderByChild('codigo').equalTo(that.innerHTML)
+        ref.orderByChild('codigo').equalTo(that.id)
             .once('value').then(function (snapshot) {
                 snapshot.forEach(function (childSnapshot) {
                     ref.child(childSnapshot.key).remove();
                 });
             });
+            updatePaginaActual();
     }
 
 }
