@@ -10,8 +10,8 @@
     <script src="backend.js"></script>
     <script type="test.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="firebase.js"></script>
-    </body>
 </head>
 
 <body>
@@ -62,15 +62,6 @@
                         <th>Nombre Empresa</th>
                         <th>Nombre Representante</th>
                         <th>RTN</th>
-                        <th>Estatus</th>
-                        <th>Tel&eacute;fono</th>
-                        <th>Celular</th>
-                        <th>Correo</th>
-                        <th>Contrase&ntilde;a</th>
-                        <th>Clasificaci&oacute;n</th>
-                        <th>Saldo</th>
-                        <th>Direcci&oacute;n</th>
-                        <th>&nbsp;</th>
                         <th>&nbsp;</th>
                     </tr>
                 </thead>
@@ -91,6 +82,51 @@
             </table>
         </div>
     </div>
+
+    <div class="w3-container">
+        
+      
+        <div id="id01" class="w3-modal">
+          <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+      
+            <div class="w3-center"><br>
+              <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+            </div>
+      
+            <form class="w3-container" action="/action_page.php">
+              <div class="w3-section">
+                <label><b>Clasificacion</b></label>
+                <input id='Clasificacion' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="usrname" required>
+                <label><b>ClaveCliente</b></label>
+                <input id='ClaveCliente' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="ClaveCliente" required>
+                <label><b>Correo</b></label>
+                <input id='Correo' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="Correo" required>
+                <label><b>Direccion</b></label>
+                <input id='Direccion' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="Direccion" required>
+                <label><b>Estatus</b></label>
+                <input id='Estatus' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="Estatus" required>
+                <label><b>NombreEmpresa</b></label>
+                <input id='NombreEmpresa' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="NombreEmpresa" required>
+                <label><b>NombreRepresentante</b></label>
+                <input id='NombreRepresentante' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="NombreRepresentante" required>
+                <label><b>RTN</b></label>
+                <input id='RTN' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="RTN" required>
+                <label><b>Saldo</b></label>
+                <input id='Saldo' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="Saldo" required>
+                <label><b>Telefono1</b></label>
+                <input id='Telefono1' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="Telefono1" required>
+                <label><b>Telefono2</b></label>
+                <input id='Telefono2' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="Telefono2" required>
+              </div>
+            </form>
+      
+            <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+              <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+            </div>
+      
+          </div>
+        </div>
+      </div>
 </body>
 
 </html>

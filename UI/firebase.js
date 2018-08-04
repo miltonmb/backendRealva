@@ -33,7 +33,7 @@ function chargeNextPage() {
         for (let i = paginaactual * 10; i < cliente.length; i++) {
             if (cont < 10) {
                 element = cliente[i];
-                prueba += `<tr><td>${element.ClaveCliente}</td><td>${element.NombreEmpresa}</td><td>${element.NombreRepresentante}</td><td>${element.RTN}</td><td>${element.Estatus}</td><td>${element.Telefono1}</td><td>${element.Telefono2}</td><td>${element.Correo}</td><td>${element.Contraseña}</td><td>${element.Clasificacion}</td><td>${element.Saldo}</td><td>${element.Direccion}</td><td><button>Aceptar</button></td><td><button>Modificar</button></td></tr>`;
+                prueba += `<tr ><td>${element.ClaveCliente}</td><td>${element.NombreEmpresa}</td><td>${element.NombreRepresentante}</td><td>${element.RTN}</td><td><button id='${element.id}' onclick="document.getElementById('id01').style.display='block';cargarDatos(id)" class="w3-button w3-green w3-large">Ver Mas</button>`;
                 cont++;
             }
         }
@@ -46,7 +46,7 @@ function chargeFirstPage() {
     let cont = 0;
     cliente.forEach(element => {
         if (cont < 10) {
-            prueba += `<tr><td>${element.ClaveCliente}</td><td>${element.NombreEmpresa}</td><td>${element.NombreRepresentante}</td><td>${element.RTN}</td><td>${element.Estatus}</td><td>${element.Telefono1}</td><td>${element.Telefono2}</td><td>${element.Correo}</td><td>${element.Contraseña}</td><td>${element.Clasificacion}</td><td>${element.Saldo}</td><td>${element.Direccion}</td><td><button>Aceptar</button></td><td><button>Modificar</button></td></tr>`;
+            prueba += `<tr ><td>${element.ClaveCliente}</td><td>${element.NombreEmpresa}</td><td>${element.NombreRepresentante}</td><td>${element.RTN}</td><td><button id='${element.id}' onclick="document.getElementById('id01').style.display='block';cargarDatos(id)" class="w3-button w3-green w3-large">Ver Mas</button>`;
             cont++;
         }
     });
@@ -62,7 +62,7 @@ function chargePrevPage() {
         for (let i = paginaactual * 10; i < cliente.length; i++) {
             if (cont < 10) {
                 element = cliente[i];
-                prueba += `<tr><td>${element.ClaveCliente}</td><td>${element.NombreEmpresa}</td><td>${element.NombreRepresentante}</td><td>${element.RTN}</td><td>${element.Estatus}</td><td>${element.Telefono1}</td><td>${element.Telefono2}</td><td>${element.Correo}</td><td>${element.Contraseña}</td><td>${element.Clasificacion}</td><td>${element.Saldo}</td><td>${element.Direccion}</td><td><button>Aceptar</button></td><td><button>Modificar</button></td></tr>`;
+                prueba += `<tr class='row' ><td>${element.ClaveCliente}</td><td>${element.NombreEmpresa}</td><td>${element.NombreRepresentante}</td><td>${element.RTN}</td><td><button onclick=onAcept(this.id)>Aceptar</button></td><td><button>Modificar</button></td></tr>`;
                 cont++;
             }
         }
@@ -73,5 +73,33 @@ function chargePrevPage() {
 function updatePaginaActual() {
     prueba = 'Página Actual: ' + paginaactual;
     document.getElementById('htmlPaginaActual').innerHTML = prueba;
+}
+
+function onAcept(identificador){
+    console.log(identificador);
+    var updates = {};
+    updates['/clientes/'+identificador+'/Estatus'] = 'Activo'; 
+    firebase.database().ref().update(updates);
+}
+
+function cargarDatos(id){
+    let element;
+    for (let i = paginaactual * 10; i < cliente.length; i++) {
+        if (cliente[i].id === id) {
+            element = cliente[i];
+        }
+    }
+    console.log(element.Correo);
+    document.getElementById('ClaveCliente').value = element.ClaveCliente;
+    document.getElementById('Clasificacion').value = element.Clasificacion;
+    document.getElementById('Correo').value = element.Correo;
+    document.getElementById('Direccion').value = element.Direccion;
+    document.getElementById('Estatus').value = element.Estatus;
+    document.getElementById('NombreEmpresa').value = element.NombreEmpresa;
+    document.getElementById('NombreRepresentante').value = element.NombreRepresentante;
+    document.getElementById('RTN').value = element.RTN;
+    document.getElementById('Saldo').value = element.Saldo;
+    document.getElementById('Telefono1').value = element.Telefono1;
+    document.getElementById('Telefono2').value = element.Telefono2;
 }
 
