@@ -34,8 +34,8 @@ function chargeNextPage() {
                     <p class="card-text"><b>Dosis: </b>${element.dosis}</p>
                     <p class="card-text"><b>Tipo de uso:</b> ${element.tipoUso}</p>
                     <p class="card-text"><b>Unidad técnica:</b> ${element.unidTec}</p>
-                    <button onclick="eliminar(this)" id =${element.codigo} type="button" class="btn btn-secondary">Eliminar</button>
-                    <button id='${element.codigo}' onclick="document.getElementById('id01').style.display='block';cargarDatos(id)" class="w3-button w3-green w3-large">Ver Mas</button>
+                    <button onclick="eliminar(this)" id =${element.codigo} type="button"  class="w3-button w3-red w3-medium">Eliminar</button>
+                    <button id='${element.codigo}' onclick="document.getElementById('id01').style.display='block';cargarDatos(id)" class="w3-button w3-blue w3-medium">Ver Mas</button>
                 </div>
             </div>
             `;
@@ -58,8 +58,8 @@ function chargeFirstPage() {
                 <p class="card-text"><b>Dosis:</b> ${element.dosis}</p>
                 <p class="card-text"><b>Tipo de uso: </b>${element.tipoUso}</p>
                 <p class="card-text"><b>Unidad técnica: </b>${element.unidTec}</p>
-                <button onclick="eliminar(this)" id =${element.codigo} type="button" class="btn btn-secondary">Eliminar</button>
-                <button id='${element.codigo}' onclick="document.getElementById('id01').style.display='block';cargarDatos(id)" class="w3-button w3-green w3-large">Ver Mas</button>
+                <button onclick="eliminar(this)" id =${element.codigo} type="button"  class="w3-button w3-red w3-medium">Eliminar</button>
+                <button id='${element.codigo}' onclick="document.getElementById('id01').style.display='block';cargarDatos(id)" class="w3-button w3-blue w3-medium">Ver Mas</button>
             </div>
         </div>
         `;
@@ -86,8 +86,8 @@ function chargePrevPage() {
                     <p class="card-text"><b>Dosis:</b> ${element.dosis}</p>
                     <p class="card-text"><b>Tipo de uso:</b> ${element.tipoUso}</p>
                     <p class="card-text"><b>Unidad técnica:</b> ${element.unidTec}</p>
-                    <button onclick="eliminar(this)" id =${element.codigo} type="button" class="btn btn-secondary">Eliminar</button>
-                    <button id='${element.codigo}' onclick="document.getElementById('id01').style.display='block';cargarDatos(id)" class="w3-button w3-green w3-large">Ver Mas</button>
+                    <button onclick="eliminar(this)" id =${element.codigo} type="button"  class="w3-button w3-red w3-medium">Eliminar</button>
+                    <button id='${element.codigo}' onclick="document.getElementById('id01').style.display='block';cargarDatos(id)" class="w3-button w3-blue w3-medium">Ver Mas</button>
                 </div>
             </div>
             `;
