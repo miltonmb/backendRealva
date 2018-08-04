@@ -63,7 +63,7 @@ function chargePrevPage() {
         for (let i = paginaactual * 10; i < cliente.length; i++) {
             if (cont < 10) {
                 element = cliente[i];
-                prueba += `<tr class='row' ><td>${element.ClaveCliente}</td><td>${element.NombreEmpresa}</td><td>${element.NombreRepresentante}</td><td>${element.RTN}</td><td><button onclick=onAcept(this.id)>Aceptar</button></td><td><button>Modificar</button></td></tr>`;
+                prueba += `<tr class='row' ><td>${element.ClaveCliente}</td><td>${element.NombreEmpresa}</td><td>${element.NombreRepresentante}</td><td>${element.RTN}</td><td><button id='${element.id}' onclick="document.getElementById('id01').style.display='block';cargarDatos(id)" class="w3-button w3-green w3-large">Ver Mas</button>`;
                 cont++;
             }
         }
