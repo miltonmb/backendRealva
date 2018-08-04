@@ -25,6 +25,8 @@ function submitOrder() {
     var inUnidTec = document.forms["myForm"]["product_unidTec"].value;
     var inSpecies = document.forms["myForm"]["product_species_list"].value;
     var inPrice = document.forms["myForm"]["product_price"].value;
+    var inLab = document.forms["myForm"]["produc_lab"].value;
+   
     /*if (inCode == "") {
         alert("Contraindicación Vacia");
         return false;
@@ -102,6 +104,7 @@ function submitOrder() {
             unidTec: inUnidTec,
             especie: inSpecies,
             precio: inPrice,
+            laboratorio: inLab
         });
         alert("Se agrego con éxito!");
     }
