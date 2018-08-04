@@ -34,7 +34,8 @@ function chargeNextPage() {
                     <p class="card-text"><b>Dosis: </b>${element.dosis}</p>
                     <p class="card-text"><b>Tipo de uso:</b> ${element.tipoUso}</p>
                     <p class="card-text"><b>Unidad técnica:</b> ${element.unidTec}</p>
-                    <button onclick="eliminar(this)" id =${element.codigo} type="button" class="btn btn-secondary">Eliminar</button>
+                    <button onclick="eliminar(this)" id =${element.codigo} type="button"  class="w3-button w3-red w3-medium">Eliminar</button>
+                    <button id='${element.codigo}' onclick="document.getElementById('id01').style.display='block';cargarDatos(id)" class="w3-button w3-blue w3-medium">Ver Mas</button>
                 </div>
             </div>
             `;
@@ -57,7 +58,8 @@ function chargeFirstPage() {
                 <p class="card-text"><b>Dosis:</b> ${element.dosis}</p>
                 <p class="card-text"><b>Tipo de uso: </b>${element.tipoUso}</p>
                 <p class="card-text"><b>Unidad técnica: </b>${element.unidTec}</p>
-                <button onclick="eliminar(this)" id =${element.codigo} type="button" class="btn btn-secondary">Eliminar</button>
+                <button onclick="eliminar(this)" id =${element.codigo} type="button"  class="w3-button w3-red w3-medium">Eliminar</button>
+                <button id='${element.codigo}' onclick="document.getElementById('id01').style.display='block';cargarDatos(id)" class="w3-button w3-blue w3-medium">Ver Mas</button>
             </div>
         </div>
         `;
@@ -67,6 +69,7 @@ function chargeFirstPage() {
     paginaactual = 0;
     document.getElementById('productRows').innerHTML = prueba;
 }
+
 function chargePrevPage() {
     let prueba = '';
     let cont = 0;
@@ -83,7 +86,8 @@ function chargePrevPage() {
                     <p class="card-text"><b>Dosis:</b> ${element.dosis}</p>
                     <p class="card-text"><b>Tipo de uso:</b> ${element.tipoUso}</p>
                     <p class="card-text"><b>Unidad técnica:</b> ${element.unidTec}</p>
-                    <button onclick="eliminar(this)" id =${element.codigo} type="button" class="btn btn-secondary">Eliminar</button>
+                    <button onclick="eliminar(this)" id =${element.codigo} type="button"  class="w3-button w3-red w3-medium">Eliminar</button>
+                    <button id='${element.codigo}' onclick="document.getElementById('id01').style.display='block';cargarDatos(id)" class="w3-button w3-blue w3-medium">Ver Mas</button>
                 </div>
             </div>
             `;
@@ -99,6 +103,26 @@ function updatePaginaActual() {
     document.getElementById('htmlPaginaActual').innerHTML = prueba;
 }
 
+function cargarDatos(inInfo){
+    let element;
+    for (let i = paginaactual * 8; i < producto.length; i++) {
+        if (producto[i].codigo === inInfo) {
+            element = producto[i];
+        }
+    }
+    document.getElementById('code').value = element.codigo;
+    document.getElementById('name').value = element.nombre;
+    document.getElementById('description').value = element.descripcion;
+    document.getElementById('indications').value = element.indicacion;
+    document.getElementById('contraindication').value = element.contraindicacion;
+    document.getElementById('dosis').value = element.dosis;
+    document.getElementById('categ').value = element.categ;
+    document.getElementById('typeUse').value = element.tipoUso;
+    document.getElementById('unidTec').value = element.unidTec;
+    document.getElementById('species').value = element.especie;
+    document.getElementById('price').value = element.precio;
+}
+
 function eliminar(that) {
     if (confirm("Eliminar?")) {
         ref.orderByChild('codigo').equalTo(that.id)
@@ -107,8 +131,7 @@ function eliminar(that) {
                     ref.child(childSnapshot.key).remove();
             });
         });
-        chargeproductos();
-        updatePaginaActual();
+        location.reload();
     }
 
 }
