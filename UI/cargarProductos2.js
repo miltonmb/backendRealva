@@ -105,9 +105,10 @@ function eliminar(that) {
             .once('value').then(function (snapshot) {
                 snapshot.forEach(function (childSnapshot) {
                     ref.child(childSnapshot.key).remove();
-                });
             });
-            updatePaginaActual();
+        });
+        chargeproductos();
+        updatePaginaActual();
     }
 
 }
