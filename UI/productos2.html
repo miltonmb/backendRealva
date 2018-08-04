@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=devide-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Backend</title>
+    <link rel="stylesheet" href="productos2.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="backend.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <script src="jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="productos.js"></script>
+    <script src="cargarProductos2.js"></script>
+
+    </body>
+</head>
+
+<body>
+    <div class="page">
+        <nav class="navbar section">
+            <span class="open-slide">
+                <a href="#" onclick="openSlideMenu()">
+                    <svg width="30" height="30">
+                        <path d="M0,5 30,5" stroke="#fff" stroke-width="5" />
+                        <path d="M0,14 30,14" stroke="#fff" stroke-width="5" />
+                        <path d="M0,23 30,23" stroke="#fff" stroke-width="5" />
+                    </svg>
+                </a>
+            </span>
+            <ul class="navbar-nav">
+                <li>
+                    <a href="index.html">Carrusel Principal</a>
+                </li>
+                <li>
+                    <a href="ofertas.html">Carrusel de Ofertas</a>
+                </li>
+                <li>
+                    <a href="descargas.html">Descargas</a>
+                </li>
+                <li>
+                    <a href="clientes.html">Clientes</a>
+                </li>
+                <li>
+                    <a href="productos.html">Productos</a>
+                </li>
+                <li>
+                    <a href="#">lista de productos</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="side-menu" class="side-nav">
+            <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+            <a href="index.html">Carrusel Principal</a>
+            <a href="ofertas.html">Carrusel de ofertas</a>
+            <a href="descargas.html">Descargas</a>
+            <a href="clientes.html">Clientes</a>
+
+            <a href="" onclick="closeSlideMenu()">Productos</a>
+        </div>
+        <div id="main">
+            <h1>Lista de productos</h1>
+            <div id=productRows class="row">
+               
+            </div>
+            <div class="links">
+                <button onclick="chargePrevPage()">Anterior</button>
+                <div id="htmlPaginaActual" class="paginacionElm">
+                    <p>Página Actual</p>
+                </div>
+                <button onclick="chargeNextPage()">Siguiente</button>
+            </div>
+        </div>
+</body>
+
+</html>
