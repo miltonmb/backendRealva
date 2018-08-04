@@ -34,7 +34,7 @@ function chargeNextPage() {
                     <p class="card-text"><b>Dosis: </b>${element.dosis}</p>
                     <p class="card-text"><b>Tipo de uso:</b> ${element.tipoUso}</p>
                     <p class="card-text"><b>Unidad técnica:</b> ${element.unidTec}</p>
-                    <button onclick="eliminar(this)" id =${element.codigo}>Eliminar</button>
+                    <button onclick="eliminar(this)" id =${element.codigo} type="button" class="btn btn-secondary">Eliminar</button>
                 </div>
             </div>
             `;
@@ -57,7 +57,7 @@ function chargeFirstPage() {
                 <p class="card-text"><b>Dosis:</b> ${element.dosis}</p>
                 <p class="card-text"><b>Tipo de uso: </b>${element.tipoUso}</p>
                 <p class="card-text"><b>Unidad técnica: </b>${element.unidTec}</p>
-                <button onclick="eliminar(this)" id =${element.codigo}>Eliminar</button>
+                <button onclick="eliminar(this)" id =${element.codigo} type="button" class="btn btn-secondary">Eliminar</button>
             </div>
         </div>
         `;
@@ -83,7 +83,7 @@ function chargePrevPage() {
                     <p class="card-text"><b>Dosis:</b> ${element.dosis}</p>
                     <p class="card-text"><b>Tipo de uso:</b> ${element.tipoUso}</p>
                     <p class="card-text"><b>Unidad técnica:</b> ${element.unidTec}</p>
-                    <button onclick="eliminar(this)" id =${element.codigo}>Eliminar</button>
+                    <button onclick="eliminar(this)" id =${element.codigo} type="button" class="btn btn-secondary">Eliminar</button>
                 </div>
             </div>
             `;
