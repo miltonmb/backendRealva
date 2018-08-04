@@ -82,6 +82,7 @@ function onAcept(identificador){
     updates['/clientes/'+identificador+'/Estatus'] = 'Activo'; 
     firebase.database().ref().update(updates);
     document.getElementById('Estatus').value = 'Activo';
+    chargeClientes();
 }
 
 function cargarDatos(id){
