@@ -27,7 +27,17 @@ function chargeNextPage() {
         for (let i = paginaactual * 10; i < producto.length; i++) {
             if (cont < 10) {
                 element = producto[i];
-                prueba += `<tr><td>${element.codigo}</td><td>${element.nombre}</td><td>${element.descripcion}</td><td>${element.indicacion}</td><td>${element.contraindicacion}</td><td>${element.dosis}</td><td>${element.categ}</td><td>${element.tipoUso}</td><td>${element.unidTec}</td><td>${element.especie}</td><td>${element.precio}</td><td ><button onclick="eliminar(this)" id =${element.codigo}>Eliminar</button></td></tr>`;
+                prueba += `<div class="card col-md">
+                <div class="card-body">
+                    <h5 class="card-title">${element.nombre}</h5>
+                    <p id="bigtext" class="card-text"><b>Descripción:</b> ${element.descripcion}</p>
+                    <p class="card-text"><b>Dosis: </b>${element.dosis}</p>
+                    <p class="card-text"><b>Tipo de uso:</b> ${element.tipoUso}</p>
+                    <p class="card-text"><b>Unidad técnica:</b> ${element.unidTec}</p>
+                    <button onclick="eliminar(this)" id =${element.codigo}>Eliminar</button>
+                </div>
+            </div>
+            `;
                 cont++;
             }
         }
@@ -40,7 +50,17 @@ function chargeFirstPage() {
     let cont = 0;
     producto.forEach(element => {
         if (cont < 10) {
-            prueba += `<tr><td>${element.codigo}</td><td>${element.nombre}</td><td>${element.descripcion}</td><td>${element.indicacion}</td><td>${element.contraindicacion}</td><td>${element.dosis}</td><td>${element.categ}</td><td>${element.tipoUso}</td><td>${element.unidTec}</td><td>${element.especie}</td><td>${element.precio}</td><td ><button onclick="eliminar(this)" id =${element.codigo}>Eliminar</button></td></tr>`;
+            prueba += `<div class="card col-md">
+            <div class="card-body">
+                <h5 class="card-title">${element.nombre}</h5>
+                <p id="bigtext" class="card-text"><b>Descripción:</b> ${element.descripcion}</p>
+                <p class="card-text"><b>Dosis:</b> ${element.dosis}</p>
+                <p class="card-text"><b>Tipo de uso: </b>${element.tipoUso}</p>
+                <p class="card-text"><b>Unidad técnica: </b>${element.unidTec}</p>
+                <button onclick="eliminar(this)" id =${element.codigo}>Eliminar</button>
+            </div>
+        </div>
+        `;
             cont++;
         }
     });
@@ -56,7 +76,17 @@ function chargePrevPage() {
         for (let i = paginaactual * 10; i < producto.length; i++) {
             if (cont < 10) {
                 element = producto[i];
-                prueba += `<tr><td>${element.codigo}</td><td>${element.nombre}</td><td>${element.descripcion}</td><td>${element.indicacion}</td><td>${element.contraindicacion}</td><td>${element.dosis}</td><td>${element.categ}</td><td>${element.tipoUso}</td><td>${element.unidTec}</td><td>${element.especie}</td><td>${element.precio}</td><td ><button onclick="eliminar(this)" id =${element.codigo}>Eliminar</button></td></tr>`;
+                prueba += `<div class="card col-md">
+                <div class="card-body">
+                    <h5 class="card-title">${element.nombre}</h5>
+                    <p id="bigtext" class="card-text"><b>Descripción: </b>${element.descripcion}</p>
+                    <p class="card-text"><b>Dosis:</b> ${element.dosis}</p>
+                    <p class="card-text"><b>Tipo de uso:</b> ${element.tipoUso}</p>
+                    <p class="card-text"><b>Unidad técnica:</b> ${element.unidTec}</p>
+                    <button onclick="eliminar(this)" id =${element.codigo}>Eliminar</button>
+                </div>
+            </div>
+            `;
                 cont++;
             }
         }

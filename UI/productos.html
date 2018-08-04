@@ -11,8 +11,7 @@
     <script src="backend.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script src="productos.js"></script>
-    <script src="cargarProductos.js"></script>
-
+  
     </body>
 </head>
 
@@ -43,6 +42,9 @@
                 </li>
                 <li>
                     <a href="#">Productos</a>
+                </li>
+                <li>
+                    <a href="ProductosView.html">lista de productos</a>
                 </li>
             </ul>
         </nav>
@@ -160,40 +162,6 @@
                 </span>
             </div>
         </form>
-
-        <div id="tabla">
-            <table class="blueTable">
-                <thead>
-                    <tr>
-                        <th>Clave</th>
-                        <th>Nombre</th>
-                        <th>Presentaci&oacute;n</th>
-                        <th>Descripci&oacute;n</th>
-                        <th>Indicaciones</th>
-                        <th>Contraindicaciones</th>
-                        <th>Categor&iacute;a</th>
-                        <th>Tipo de producto y uso</th>
-                        <th>Unidad t&eacute;cnica</th>
-                        <th>Especies</th>
-                        <th>Precio Lps.</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <td colspan="4">
-                            <div class="links">
-                                <button onclick="chargePrevPage()">Anterior</button>
-                                <div id="htmlPaginaActual" class="paginacionElm">
-                                    <p>Página Actual</p>
-                                </div>
-                                <button onclick="chargeNextPage()">Siguiente</button>
-                            </div>
-                        </td>
-                    </tr>
-                </tfoot>
-                <tbody id="productRows"></tbody>
-            </table>
-        </div>
 
     </div>
 </body>

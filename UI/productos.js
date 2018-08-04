@@ -86,7 +86,7 @@ function submitOrder() {
     //'push' (aka add) your order to the existing list
     firebaseOrdersCollection.push(products);*/
     if (selectedfile == null) {
-
+        
     } else {
         const newProduct = firebase.database().ref('/productos').push();
         newProduct.set({
