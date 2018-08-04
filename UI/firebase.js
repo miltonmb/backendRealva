@@ -1,6 +1,7 @@
 var cliente;
 var paginaactual = 0;
 var selectedfile;
+var tempcliente;
 var config = {
     apiKey: "AIzaSyBZAKqZfYiuQDTF-pDtZsxlO5X72wNFA1Q",
     authDomain: "realva-54c4a.firebaseapp.com",
@@ -80,6 +81,7 @@ function onAcept(identificador){
     var updates = {};
     updates['/clientes/'+identificador+'/Estatus'] = 'Activo'; 
     firebase.database().ref().update(updates);
+    document.getElementById('Estatus').value = 'Activo';
 }
 
 function cargarDatos(id){
@@ -89,6 +91,7 @@ function cargarDatos(id){
             element = cliente[i];
         }
     }
+    tempcliente = element;
     console.log(element.Correo);
     document.getElementById('ClaveCliente').value = element.ClaveCliente;
     document.getElementById('Clasificacion').value = element.Clasificacion;
