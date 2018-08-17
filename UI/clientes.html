@@ -10,6 +10,7 @@
     <script src="backend.js"></script>
     <script type="test.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="firebase.js"></script>
 </head>
@@ -57,6 +58,10 @@
     </div>
     <div id="main">
         <h1>Clientes</h1>
+        <div>
+            <input id='busqueda' type="text" placeholder="Search.." name="search">
+            <button onclick="buscar()"><i class="fa fa-search"></i></button>
+        </div>
         <div id="tabla">
             <table class="blueTable">
                 <thead>
@@ -72,11 +77,11 @@
                     <tr>
                         <td colspan="4">
                             <div class="links">
-                                <button onclick="chargePrevPage()">Anterior</button>
+                                    <button onclick="chargeNextPage()">Siguiente</button>
                                 <div id="htmlPaginaActual" class="paginacionElm">
                                     <p>Página Actual</p>
                                 </div>
-                                <button onclick="chargeNextPage()">Siguiente</button>
+                                <button onclick="chargePrevPage()">Anterior</button>
                             </div>
                         </td>
                     </tr>
@@ -87,8 +92,6 @@
     </div>
 
     <div class="w3-container">
-
-
         <div id="id01" class="w3-modal">
           <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
 
@@ -144,6 +147,18 @@
           </div>
         </div>
       </div>
+      <div id="id03" class="w3-modal">
+            <div class="w3-modal-content">
+                <header class="w3-container w3-light-grey"> 
+                    <span onclick="document.getElementById('id03').style.display='none'" 
+                    class="w3-button w3-display-topright">&times;</span>
+                    <h2>Cliente No Existe</h2>
+                </header>
+              <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+                <button onclick="document.getElementById('id03').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+              </div>
+            </div>
+          </div>
 </body>
 
 </html>
