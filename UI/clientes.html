@@ -126,7 +126,21 @@
             <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
               <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
               <button onclick="onAcept(tempcliente.id)" type="button" class="w3-button w3-green">Aceptar</button>
+              <button onclick="document.getElementById('id02').style.display='block'" type="button" class="w3-button w3-green">Modificar</button>
             </div>
+          </div>
+        </div>
+      </div>
+      <div id="id02" class="w3-modal">
+        <div class="w3-modal-content">
+            <header class="w3-container w3-light-grey"> 
+                <span onclick="document.getElementById('id02').style.display='none'" 
+                class="w3-button w3-display-topright">&times;</span>
+                <h2>Desea Modificar este cliente?</h2>
+            </header>
+          <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+            <button onclick="document.getElementById('id02').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+            <button onclick="onModificar(tempcliente.id);document.getElementById('id02').style.display='none'" type="button" class="w3-button w3-green">Aceptar</button>
           </div>
         </div>
       </div>
