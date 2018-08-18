@@ -41,7 +41,7 @@ function chargeImage() {
     let element;
     for (let i = 0; i < imagen.length; i++) {
         element = imagen[i];
-        prueba += `<div class='card'><img src='${imagen[i].imagen}' class='imagenesDisplay'> <div class='container'><i class='fa fa-trash' id='${imagen[i].id}' onclick=onDelete(this.id)></i></div></div>`;
+        prueba += `<div class='card'><img src='${imagen[i].imagen}' class='imagenesDisplay'> <div class='container'><i class='fa fa-trash icon' id='${imagen[i].id}' onclick=onDelete(this.id)></i></div></div>`;
     }
     document.getElementById('listaimagenes').innerHTML = prueba;
 }

@@ -14,16 +14,15 @@
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
-
 .container {
     padding: 2px 16px;
 }
-.container i {
+.container .icon {
     font-size: 40px;
     left: 50%;
     position: relative;
 }
-i:hover{
+.icon:hover{
     animation: shake 0.5s; 
     animation-iteration-count: 1; 
 }
