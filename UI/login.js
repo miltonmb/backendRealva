@@ -5,7 +5,7 @@ var username = document.getElementById("username").value;
 var password = document.getElementById("password").value;
   if ( username == "RealvaAdmin" && password == "gruporealva123"){
     alert ("Login successfully");
-    window.location = web-analytics-real-time.html// Redirecting to other page.
+    window.location = "web-analytics-real-time.html"// Redirecting to other page.
     return false;
   }else{
     attempt --;// Decrementing by one.
