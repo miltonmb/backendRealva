@@ -33,7 +33,7 @@ function submitOrder() {
     console.log(inSpecies2);
     var inPrice = document.forms["myForm"]["product_price"].value;
     var inLab = document.forms["myForm"]["produc_lab"].value;
-   
+
     /*if (inCode == "") {
         alert("Contraindicación Vacia");
         return false;
