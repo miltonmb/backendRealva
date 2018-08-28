@@ -10,6 +10,7 @@ var config = {
     messagingSenderId: "233461489484"
 };
 firebase.initializeApp(config);
+
 var database = firebase.database();
 
 function submitOrder() {
@@ -21,12 +22,18 @@ function submitOrder() {
     var inIndications = document.forms["myForm"]["product_indications"].value;
     var inContraindication = document.forms["myForm"]["product_contraindication"].value;
     var inCateg = document.forms["myForm"]["product_categ"].value;
+    var inSpecies3 = $('#product_categ').val();
+  //  console.log(inSpecies3);
+
     var inTypeUse = document.forms["myForm"]["product_type_use"].value;
     var inUnidTec = document.forms["myForm"]["product_unidTec"].value;
     var inSpecies = document.forms["myForm"]["product_species_list"].value;
+    console.log(inSpecies);
+    var inSpecies2 = $('#product_species_list').val();
+    console.log(inSpecies2);
     var inPrice = document.forms["myForm"]["product_price"].value;
     var inLab = document.forms["myForm"]["produc_lab"].value;
-   
+
     /*if (inCode == "") {
         alert("Contraindicación Vacia");
         return false;
@@ -102,10 +109,15 @@ function submitOrder() {
             categ: inCateg,
             tipoUso: inTypeUse,
             unidTec: inUnidTec,
-            especie: inSpecies,
             precio: inPrice,
             laboratorio: inLab
         });
+        const newEspecie = firebase.database().ref('/productos/especie').push();
+        newEspecie.set({
+            test: inSpecies
+        }
+
+        )
         alert("Se agrego con éxito!");
     }
     //'products' is the name of the 'collection' (aka database table)

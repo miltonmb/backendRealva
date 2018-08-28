@@ -6,52 +6,142 @@
     <meta name="viewport" content="width=devide-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Backend</title>
-    <link href="assets/fonts/font-roboto.css" rel="stylesheet">
-    <link href="assets/bootstrap/bootstrap4-alpha3.min.css" rel="stylesheet">
-    <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/web-analytics/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="productos2.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
         crossorigin="anonymous">
-    <link rel="stylesheet" href="styleProducto.css">
-    <link rel="stylesheet" href="style.css">
-
-    <script src="assets/jquery/jquery-3.1.0.min.js"></script>
-    <script src="assets/tether/tether.min.js"></script>
-    <script src="assets/bootstrap/bootstrap4-alpha3.min.js"></script>
-    <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    <script src="assets/web-analytics/real-time.js"></script>
-    <script src="jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="dist/css/bootstrap-select.css">
+    
+    <script src="backend.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="dist/js/bootstrap-select.js"></script>
     <script src="productos.js"></script>
-
+  
     </body>
 </head>
 
 <body>
-    <!-- header -->
-    <nav class="navbar navbar-fixed-top" id="header">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <div id="sidebar-toggle-button">
-                    <i class="fa fa-bars" aria-hidden="true"></i>
-                </div>
-                <div class="brand">
-                    <a href="descargas.html">
-                        <span class="hidden-xs-down m-r-3">Dashboard</span>
-                        <span class="lead">Descargas</span>
-                    </a>
-                </div>
+  <!-- header -->
+  <nav class="navbar navbar-fixed-top" id="header">
+      <div class="container-fluid">
+          <div class="navbar-header">
+              <div id="sidebar-toggle-button">
+                  <i class="fa fa-bars" aria-hidden="true"></i>
+              </div>
+              <div class="brand">
+                  <a href="productos.html">
+                      <span class="hidden-xs-down m-r-3">Dashboard</span>
+                      <span class="lead">Productos</span>
+                  </a>
+              </div>
 
-            </div>
+          </div>
+      </div>
+  </nav>
+  <!-- /header -->
+
+  <!-- sidebar -->
+  <div class="sidebar-toggle" id="sidebar">
+      <ul class="nav nav-sidebar">
+          <li>
+              <a href="web-analytics-real-time.html">
+                  <i class="fa fa-clock-o fa-lg fa-fw" aria-hidden="true"></i>
+                  <span>Tiempo Real</span>
+              </a>
+          </li>
+          <li role="separator" class="divider"></li>
+          <li>
+              <a href="principal.html">
+                  <i class="far fa-images fa-lg fa-fw" aria-hidden="true"></i>
+                  <span>Carrusel Principal</span>
+              </a>
+          </li>
+          <li role="separator" class="divider"></li>
+          <li>
+              <a href="ofertas.html">
+                  <i class="fa fa-photo fa-lg fa-fw" aria-hidden="true"></i>
+                  <span>Carrusel de Ofertas</span>
+              </a>
+          </li>
+          <li role="separator" class="divider"></li>
+          <li>
+              <a href="descargas.html">
+                  <i class="fa fa-download fa-lg fa-fw" aria-hidden="true"></i>
+                  <span>Descargas</span>
+              </a>
+          </li>
+          <li role="separator" class="divider"></li>
+          <li>
+              <a href="clientes.html">
+                  <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+                  <span>Clientes</span>
+              </a>
+          </li>
+          <li role="separator" class="divider"></li>
+          <li>
+              <a href="productos.html" class="active">
+                  <i class="fas fa-shopping-cart fa-lg fa-fw" aria-hidden="true"></i>
+                  <span>Productos</span>
+              </a>
+          </li>
+          <li role="separator" class="divider"></li>
+          <li>
+              <a href="listaproductos.html">
+                  <i class="fas fa-clipboard-list fa-lg fa-fw" aria-hidden="true"></i>
+                  <span>Listar productos</span>
+              </a>
+          </li>
+      </ul>
+  </div>
+  <script>
+      $('#sidebar-toggle-button').on('click', function () {
+          $('#sidebar').toggleClass('sidebar-toggle');
+          $('#page-content-wrapper').toggleClass('page-content-toggle');
+      });
+  </script>
+  <!-- /sidebar -->
+  <div id="main">
+      <h1 align="center" >Agregar Productos</h1>
+
+      <div class="row">
+        <form id="myForm">
+        <div class="column" id="column-left">
+          <div class="division">
+              <label class="labelclave">Clave: </label>
+              <input type="text" name="product_code" id="codigo" placeholder="Ingrese Clave" required>
+          </div>
+          <div class="division">
+              <label class="labelclave" >Unidad técnica: </label>
+              <input list="product_unidTec_list" id="product_unidTec" placeholder="Escoja Unidad Tecnica" required>
+              <datalist id="product_unidTec_list">
+                  <option value="ANIMALES DE PRODUCCION">
+                  <option value="ANIMALES DE COMPAÑÍA">
+              </datalist>
+          </div>
+
+          <div class="division">
+              <label class="labelclave">Precio: Lps. </label>
+              <input type="number" id="product_price" min="0.01" step="0.01" value="0.00" />
+          </div>
+
+          <div class="division">
+            <label class="labelclave">Imagen: </label>
+            <input type="file" accept="image/*" id="imagenProducto" onchange="handleFileInput()" >
+          </div>
+          <div class="division">
+            <label class="labelclave">Proveedor: </label>
+              <input type="text" name="produc_lab" id="laboratorio" placeholder="Ingrese Nombre Proveedor" required>
+          </div>
         </div>
-    </nav>
-    <!-- /header -->
+        <div class="column" >
+          <div class="division">
+              <label class="labelclave" id="lbNombre">Nombre Producto: </label>
+              <input type="text" name="product_name" id="nombre" placeholder="Ingrese Nombre Producto" required>
+          </div>
 
     <!-- sidebar -->
     <div class="sidebar-toggle" id="sidebar">
@@ -113,111 +203,137 @@
         });
     </script>
     <!-- /sidebar -->
-    <div id="main">
-        <h1>Productos</h1>
-        <form id="myForm">
-            <div id="productosTop">
-                <span>
-                    <label>Clave:</label>
-                    <input type="text" name="product_code" id="codigo">
-                </span>
-                <span>
-                    <label id="lbNombre">Nombre:</label>
-                    <input type="text" name="product_name" id="nombre">
-                </span>
-            </div>
-            <div id="productosMiddle1">
-                <span>
-                    <label>Presentación</label>
-                    <input type="text" name="product_dosis" id="dosis">
-                </span>
-                <span>
-                    <label>Descripción:</label>
-                    <textarea id="descripcion" name="product_description" form="myForm"></textarea>
-                </span>
-            </div>
-            <div id="productoMiddle2">
-                <span>
-                    <label>Indicaciones:</label>
-                    <textarea id="indicaciones" name="product_indications" form="myForm"></textarea>
-                </span>
-                <span>
-                    <label>Contraindicaciones:</label>
-                    <textarea id="contraIndicaciones" name="product_contraindication" form="myForm"></textarea>
-                </span>
-            </div>
-            <div id="productoMiddle3">
-                <span>
-                    <label>Categoría</label>
-                    <input list="product_categ_list" id="product_categ">
-                    <datalist id="product_categ_list">
-                        <option value="BIOLOGICOS">
-                            <option value="ANTIINFLAMATORIO">
-                                <option value="ANTIBIOTICO">
-                                    <option value="ANTIDOTO">
-                                        <option value="ANABOLICO">
-                                            <option value="ANESTESICOS Y EUTANASICOS">
-                                                <option value="VITAMINAS Y MINERALES">
-                                                    <option value="ANTIPARASITARIO">
-                                                        <option value="OTICOS Y OFTALMICOS">
-                                                            <option value="ANTISEPTICO Y DESINFECTANTE">
-                                                                <option value="DERMATOLOGICOS">
-                                                                    <option value="GASTROINTESTINALES">
-                                                                        <option value="COSMETICO">
-                                                                            <option value="IDENTIFICACION Y ACCESORIOS">
-                                                                                <option value="ANTIHEMORRAGICOS">
-                                                                                    <option value="HORMONALES">
-                    </datalist>
-                </span>
-                <span>
-                    <label>Tipo de producto y uso</label>
-                    <textarea id="typeUse" name="product_type_use" form="myForm"></textarea>
-                </span>
-            </div>
-            <div id="productoMiddle4">
-                <span>
-                    <label>Unidad técnica</label>
-                    <input list="product_unidTec_list" id="product_unidTec">
-                    <datalist id="product_unidTec_list">
-                        <option value="ANIMALES DE PRODUCCION">
-                            <option value="ANIMALES DE COMPAÑÍA">
-                    </datalist>
-                </span>
-                <span>
-                    <label>Especies</label>
-                    <select id="product_species_list" multiple>
-                        <option value="CANINOS">CANINOS</option>
-                        <option value="BOVINOS">BOVINOS</option>
-                        <option value="EQUINOS">EQUINOS</option>
-                        <option value="OVINOS">OVINOS</option>
-                        <option value="CAPRINOS">CAPRINOS</option>
-                        <option value="FELINOS">FELINOS</option>
-                        <option value="ZORROS">ZORROS</option>
-                        <option value="HURONES">HURONES</option>
-                        <option value="TODAS ESPECIES">TODA ESPECIE</option>
-                        <option value="PORCINOS">PORCINOS</option>
-                        <option value="CONEJOS">CONEJOS</option>
-                        <option value="AVES DE ENGORDE">AVES DE ENGORDE</option>
-                        <option value="AVES DE POSTURA">AVES DE POSTURA</option>
-                        <option value="AVES DE TRASPATIO">AVES DE TRASPATIO</option>
-                        <option value="PAVOS">PAVOS</option>
-                        <option value="GALLOS DE PELEA">GALLOS DE PELEA</option>
-                        <option value="AVES">AVES</option>
-                    </select>
-                </span>
-            </div>
-            <div id="productosBottom">
-                <span>
-                    <label>Precio Lps.</label>
-                    <input type="number" id="product_price" min="0.01" step="0.01" value="0.00" />
-                </span>
-                <span>
-                    <input type="file" accept="image/*" id="imagenProducto" onchange="handleFileInput()">
-                    <button id="btnSubir" onclick='submitOrder()'>Subir</button>
-                </span>
-            </div>
-        </form>
+    <div class="container">
+            <div class="ui-block">
+                <div class="ui-block-title">
+                    <h1 class="title">Productos</h1>
+                </div>
+                <div class="ui-block-content">
+                    <!-- Personal Information Form  -->
+                    <form id="myForm">
+                        <div class="row">
+                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="form-group">
+                                    <label for="disabledTextInput">Clave</label>
+                                    <input type="text" name="product_code" id="codigo" class="form-control" required="required" placeholder="Clave">
+                                </div>
+                                <div class="form-group">
+                                    <label for="disabledTextInput">Presentación</label>
+                                    <input type="text" id="dosis" name="product_dosis" class="form-control" required="required" placeholder="Presentación">
+                                </div>
+                                <div class="form-group">
+                                    <label for="disabledTextInput">Especies</label>
+                                    <select class="selectpicker show-menu-arrow form-control" multiple id="product_species_list">
+                                        <option value="CANINOS">CANINOS</option>
+                                        <option value="BOVINOS">BOVINOS</option>
+                                        <option value="EQUINOS">EQUINOS</option>
+                                        <option value="OVINOS">OVINOS</option>
+                                        <option value="CAPRINOS">CAPRINOS</option>
+                                        <option value="FELINOS">FELINOS</option>
+                                        <option value="ZORROS">ZORROS</option>
+                                        <option value="HURONES">HURONES</option>
+                                        <option value="TODAS ESPECIES">TODA ESPECIE</option>
+                                        <option value="PORCINOS">PORCINOS</option>
+                                        <option value="CONEJOS">CONEJOS</option>
+                                        <option value="AVES DE ENGORDE">AVES DE ENGORDE</option>
+                                        <option value="AVES DE POSTURA">AVES DE POSTURA</option>
+                                        <option value="AVES DE TRASPATIO">AVES DE TRASPATIO</option>
+                                        <option value="PAVOS">PAVOS</option>
+                                        <option value="GALLOS DE PELEA">GALLOS DE PELEA</option>
+                                        <option value="AVES">AVES</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="disabledTextInput">Categorias</label>
+                                    <select class="selectpicker show-menu-arrow form-control" multiple id="product_categ">
+                                        <option value="ANTIINFLAMATORIO">ANTIINFLAMATORIO</option>
+                                        <option value="ANTIBIOTICO">ANTIBIOTICO</option>
+                                        <option value="ANTIDOTO">ANTIDOTO</option>
+                                        <option value="ANABOLICO">ANABOLICO</option>
+                                        <option value="ANESTESICOS Y EUTANASICOS">ANESTESICOS Y EUTANASICOS</option>
+                                        <option value="VITAMINAS Y MINERALES">VITAMINAS Y MINERALES</option>
+                                        <option value="ANTIPARASITARIO">ANTIPARASITARIO</option>
+                                        <option value="OTICOS Y OFTALMICOS">OTICOS Y OFTALMICOS</option>
+                                        <option value="TODAS ESPECIES">TODAS ESPECIES</option>
+                                        <option value="ANTISEPTICO Y DESINFECTANTE">ANTISEPTICO Y DESINFECTANTE</option>
+                                        <option value="DERMATOLOGICOS">DERMATOLOGICOS</option>
+                                        <option value="GASTROINTESTINALES">GASTROINTESTINALES</option>
+                                        <option value="COSMETICO">COSMETICO</option>
+                                        <option value="IDENTIFICACION Y ACCESORIOS">IDENTIFICACION Y ACCESORIOS</option>
+                                        <option value="ANTIHEMORRAGICOS">ANTIHEMORRAGICOS</option>
+                                        <option value="HORMONALES">HORMONALES</option>
+                                    </select>
+                                </div>
+                            </div>
 
+                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="form-group">
+                                    <label for="disabledTextInput">Nombre</label>
+                                    <input type="text" name="product_name" id="nombre" class="form-control" required="required" placeholder="Nombre">
+                                </div>
+                                <div class="form-group">
+                                    <label>Unidad Tecnica</label>
+                                    <select class="selectpicker show-menu-arrow form-control" multiple id="product_unidTec">
+                                        <option value="ANIMALES DE PRODUCCION">ANIMALES DE PRODUCCION</option>
+                                        <option value="ANIMALES DE COMPAÑÍA">ANIMALES DE COMPAÑÍA</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="precio">Precio Lps.</label>
+                                    <input step="0.01" min="0.01" value="0.00" type="number" id="product_price" class="form-control" required="required" placeholder="Disabled input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="disabledTextInput">Laboratorio</label>
+                                    <input type="text" name="laboratorio" id="produc_lab" class="form-control" required="required" placeholder="Laboratorio">
+                                </div>
+                            </div>
+
+                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="form-group">
+                                    <label for="disabledTextInput">Descripcion</label>
+                                    <textarea name="product_description" class="form-control" id="descripcion" rows="6"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="disabledTextInput">Indicaciones</label>
+                                    <textarea name="product_indications" class="form-control" id="indicaciones" rows="6"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="disabledTextInput">Contraindicaciones</label>
+                                    <textarea name="product_contraindication" class="form-control" id="contraIndicaciones" rows="6"></textarea>
+                                </div>
+
+                            </div>
+
+                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+
+                                <div class="form-group">
+                                    <label for="disabledTextInput">Tipo de producto y uso</label>
+                                    <textarea name="product_type_use" class="form-control" id="typeUse" rows="6"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="disabledTextInput">Indicaciones</label>
+                                    <textarea class="form-control" id="indicaciones" rows="6"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <input type="file" accept="image/*" id="imagenProducto" onchange="handleFileInput()" required="required">
+                                </div>
+
+                            </div>
+                            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="form-group">
+                                    <button id="btnSubir" type="button" class="btn btn-success" onclick='submitOrder()'>Agregar</button>
+    
+                                </div>
+                            </div>
+                         
+
+                        </div>
+
+                    </form>
+
+                    <!-- ... end Personal Information Form  -->
+                </div>
+            </div>
     </div>
 </body>
 
