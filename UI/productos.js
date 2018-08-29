@@ -105,7 +105,8 @@ function submitOrder() {
             especie: inSpecies,
             unidTec: inUnidTec,
             precio: inPrice,
-            laboratorio: inLab
+            laboratorio: inLab,
+            visita: 0
         });
         alert("Se agrego con éxito!");
     }
