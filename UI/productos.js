@@ -138,6 +138,8 @@ function addRow() {
     var myTable = document.getElementById("tablaDosis");
     var currentIndex = myTable.rows.length;
     var currentRow = myTable.insertRow(-1);
+    currentRow.setAttribute("id", "rowDosis" + currentIndex);
+
     /*type="text" id="dosis0" name="product_dosis0" class="form-control" required="required"
     placeholder="Presentación" dosis*/
     var dosisBox = document.createElement("input");
@@ -159,11 +161,32 @@ function addRow() {
     precioBox.setAttribute("min", "0");
     precioBox.setAttribute("value", "0.00");
 
+    /*<button id="btnRemoveRow" type="button" class="btn btn-danger" onclick="removeRow()">-</button>*/
+    var removeBox = document.createElement("button");
+    removeBox.setAttribute("type", "button");
+    removeBox.setAttribute("id", "rowDosis" + currentIndex);
+    removeBox.setAttribute("class", "btn btn-danger");
+    removeBox.setAttribute("onclick", "removeRow(this)");
+    removeBox.textContent = "-";
+
+
     var currentCell = currentRow.insertCell(-1);
     currentCell.appendChild(dosisBox);
 
     currentCell = currentRow.insertCell(-1);
     currentCell.appendChild(precioBox);
+
+    currentCell = currentRow.insertCell(-1);
+    currentCell.appendChild(removeBox);
+}
+
+function removeRow(that) {
+    if (confirm("Eliminar?")) {
+        console.log(that.id);
+        var element = document.getElementById(that.id);
+        element.parentNode.removeChild(element);
+    }
+
 }
 
 function cargarDatos() {

@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 
-    <script src="backend.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
@@ -236,17 +235,19 @@
                                         <th>Presentación(Dosis)</th>
                                         <th>Precio</th>
                                     </tr>
-                                    <tr>
+                                    <tr id="rowDosis">
                                         <td> <input type="text" id="dosis0" name="product_dosis0" class="form-control" required="required"
-                                                placeholder="Presentación">
+                                            placeholder="Presentación">
                                         </td>
                                         <td><input step="any" min="0" value="0.00" type="number" id="product_price0" class="form-control"
-                                                required="required"></td>
+                                            required="required">
+                                        </td>
+                                        <td>
+                                            <button id="rowDosis" type="button" class="btn btn-danger" onclick="removeRow(this)">-</button>
+                                        </td>
                                     </tr>
-
-                                    <tr id=""></tr>
                                 </table>
-                                <button id="btnSubir" type="button" class="btn btn-success" onclick="addRow()">+</button>
+                                <button id="btnAddRow" type="button" class="btn btn-success" onclick="addRow()">+</button>
                             </div>
 
                             <div class="form-group">
