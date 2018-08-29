@@ -79,18 +79,18 @@ function chargePrevPage() {
         for (let i = paginaactual * 8; i < producto.length; i++) {
             if (cont < 8) {
                 element = producto[i];
-                prueba += `<div class="card col-md">
-                <div class="card-body">
-                    <h5 class="card-title">${element.nombre}</h5>
-                    <p id="bigtext" class="card-text"><b>Descripción: </b>${element.descripcion}</p>
-                    <p class="card-text"><b>Dosis:</b> ${element.dosis}</p>
-                    <p class="card-text"><b>Tipo de uso:</b> ${element.tipoUso}</p>
-                    <p class="card-text"><b>Unidad técnica:</b> ${element.unidTec}</p>
-                    <button onclick="eliminar(this)" id =${element.codigo} type="button"  class="w3-button w3-red w3-medium">Eliminar</button>
-                    <button id='${element.codigo}' onclick="document.getElementById('id01').style.display='block';cargarDatos(id)" class="w3-button w3-blue w3-medium">Ver Mas</button>
-                </div>
-            </div>
-            `;
+                prueba += 
+                        `<div class="card col-md">
+                            <div class="card-body">
+                                <h5 class="card-title">${element.nombre}</h5>
+                                <p id="bigtext" class="card-text"><b>Descripción: </b>${element.descripcion}</p>
+                                <p class="card-text"><b>Dosis:</b> ${element.dosis}</p>
+                                <p class="card-text"><b>Tipo de uso:</b> ${element.tipoUso}</p>
+                                <p class="card-text"><b>Unidad técnica:</b> ${element.unidTec}</p>
+                                <button onclick="eliminar(this)" id =${element.codigo} type="button"  class="w3-button w3-red w3-medium">Eliminar</button>
+                                <button id='${element.codigo}' onclick="document.getElementById('id01').style.display='block';cargarDatos(id)" class="w3-button w3-blue w3-medium">Ver Mas</button>
+                            </div>
+                        </div>`;
                 cont++;
             }
         }
@@ -110,6 +110,7 @@ function cargarDatos(inInfo){
             element = producto[i];
         }
     }
+    document.getElementById('mostrarImg').innerHTML = `<img src='${element.imagen}' class='imagenesDisplay' height="65%" width="65%">`;
     document.getElementById('code').value = element.codigo;
     document.getElementById('name').value = element.nombre;
     document.getElementById('description').value = element.descripcion;

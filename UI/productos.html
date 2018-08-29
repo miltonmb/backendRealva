@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
         crossorigin="anonymous">
     <link rel="stylesheet" href="dist/css/bootstrap-select.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 
     <script src="backend.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -118,10 +120,12 @@
                                 <label for="disabledTextInput">Clave</label>
                                 <input type="text" name="product_code" id="codigo" class="form-control" required="required" placeholder="Clave">
                             </div>
+                            <!--
                             <div class="form-group">
-                                <label for="disabledTextInput">Presentación</label>
+                                <label for="disabledTextInput">Presentación(Dosis)</label>
                                 <input type="text" id="dosis" name="product_dosis" class="form-control" required="required" placeholder="Presentación">
                             </div>
+                            -->
                             <div class="form-group">
                                 <label for="disabledTextInput">Especies</label>
                                 <select class="selectpicker show-menu-arrow form-control" multiple id="product_species_list">
@@ -179,10 +183,12 @@
                                     <option value="ANIMALES DE COMPAÑÍA">ANIMALES DE COMPAÑÍA</option>
                                 </select>
                             </div>
+                            <!--
                             <div class="form-group">
                                 <label for="precio">Precio Lps.</label>
-                                <input step="0.01" min="0.01" value="0.00" type="number" id="product_price" class="form-control" required="required" placeholder="Disabled input">
+                                <input step="any" min="0" value="0.00" type="number" id="product_price" class="form-control" required="required" placeholder="Disabled input">
                             </div>
+                            -->
                             <div class="form-group">
                                 <label for="disabledTextInput">Laboratorio</label>
                                 <select class="selectpicker show-menu-arrow form-control" id="product_labo">
@@ -211,7 +217,6 @@
                                 <label for="disabledTextInput">Contraindicaciones</label>
                                 <textarea name="product_contraindication" class="form-control" id="contraIndicaciones" rows="6"></textarea>
                             </div>
-
                         </div>
 
                         <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
@@ -224,24 +229,116 @@
                                 <label for="disabledTextInput">Indicaciones</label>
                                 <textarea class="form-control" id="indicaciones" rows="6"></textarea>
                             </div>
+
                             <div class="form-group">
+                                <table id="tablaDosis" style="width:100%">
+                                    <tr>
+                                        <th>Presentación(Dosis)</th>
+                                        <th>Precio</th>
+                                    </tr>
+                                    <tr>
+                                        <td> <input type="text" id="dosis0" name="product_dosis0" class="form-control" required="required"
+                                                placeholder="Presentación">
+                                        </td>
+                                        <td><input step="any" min="0" value="0.00" type="number" id="product_price0" class="form-control"
+                                                required="required"></td>
+                                    </tr>
+
+                                    <tr id=""></tr>
+                                </table>
+                                <button id="btnSubir" type="button" class="btn btn-success" onclick="addRow()">+</button>
+                            </div>
+
+                            <div class="form-group">
+                                <div id="mostrarimagen"></div>
                                 <input type="file" accept="image/*" id="imagenProducto" onchange="handleFileInput()" required="required">
                             </div>
 
                         </div>
+
                         <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="form-group">
-                                <button id="btnSubir" type="button" class="btn btn-success" onclick='submitOrder()'>Agregar</button>
-
+                                <button id="btnSubir" type="button" class="btn btn-success" onclick="document.getElementById('id01').style.display='block';cargarDatos()">Agregar</button>
                             </div>
                         </div>
-
 
                     </div>
 
                 </form>
-
                 <!-- ... end Personal Information Form  -->
+            </div>
+        </div>
+        <div class="w3-container">
+            <div id="id01" class="w3-modal">
+                <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+                    <div class="w3-center">
+                        <br>
+                        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright"
+                            title="Close Modal">&times;</span>
+                    </div>
+                    <div id="mostrarImg"></div>
+                    <form class="w3-container" action="/action_page.php">
+                        <div class="w3-section">
+                            <label>
+                                <b>Código</b>
+                            </label>
+                            <input id='code' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="code" disabled required>
+                            <label>
+                                <b>Nombre</b>
+                            </label>
+                            <input id='name' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="name" disabled required>
+                            <label>
+                                <b>Descripción</b>
+                            </label>
+                            <textarea rows="4" cols="50" id='description' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="description"
+                                disabled required></textarea>
+                            <label>
+                                <b>Indicaciones</b>
+                            </label>
+                            <input id='indications' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="indications" disabled
+                                required>
+                            <label>
+                                <b>Contraindicaciones</b>
+                            </label>
+                            <input id='contraindication' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="contraindication"
+                                disabled required>
+                            <label>
+                                <b>Dosis</b>
+                            </label>
+                            <input id='dosisModal' class="w3-input w3-border w3-margin-bottom" type="text" name="dosisMod" disabled required>
+                            <label>
+                                <b>Categoría</b>
+                            </label>
+                            <input id='categ' class="w3-input w3-border w3-margin-bottom" type="text" name="categ" disabled required>
+                            <label>
+                                <b>Tipo de uso</b>
+                            </label>
+                            <input id='typeUseModal' class="w3-input w3-border w3-margin-bottom" type="text" name="typeUseMod" disabled required>
+                            <label>
+                                <b>Unidad técnica</b>
+                            </label>
+                            <input id='unidTec' class="w3-input w3-border w3-margin-bottom" type="text" name="unidTec" disabled required>
+                            <label>
+                                <b>Especie</b>
+                            </label>
+                            <input id='species' class="w3-input w3-border w3-margin-bottom" type="text" name="species" disabled required>
+                            <label>
+                                <b>Precio</b>
+                            </label>
+                            <input id='price' class="w3-input w3-border w3-margin-bottom" type="text" name="price" disabled required>
+                            <label>
+                                <b>Laboratorio</b>
+                            </label>
+                            <input id='lab' class="w3-input w3-border w3-margin-bottom" type="text" name="lab" disabled required>
+                        </div>
+                    </form>
+
+                    <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+                        <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+                        <button onclick="submitOrder()" type="button" class="w3-button w3-green">Aceptar</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
