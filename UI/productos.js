@@ -70,23 +70,7 @@ function submitOrder() {
         alert("Especie Vacia");
         return false;
     }*/
-    /*
-    var products = {
-        code: inCode,
-        name: inName,
-        description: inDescription,
-        indications: inIndications,
-        contraindication: inContraindication,
-        dosis: inDosis,
-        categ: inCateg,
-        typeUse: inTypeUse,
-        unidTec: inUnidTec,
-        species: inSpecies,
-        price: inPrice,
-        img: ""
-    };
-
-    //'push' (aka add) your order to the existing list
+    /*'push' (aka add) your order to the existing list 
     firebaseOrdersCollection.push(products);*/
     if (selectedfile == null) {
 
@@ -99,12 +83,12 @@ function submitOrder() {
             descripcion: inDescription,
             indicacion: inIndications,
             contraindicacion: inContraindication,
-            dosis: inDosis,
+            //dosis: inDosis,
             categ: inCateg,
             tipoUso: inTypeUse,
             especie: inSpecies,
             unidTec: inUnidTec,
-            precio: inPrice,
+            //precio: inPrice,
             laboratorio: inLab,
             visita: 0
         });
@@ -212,7 +196,8 @@ function cargarDatos() {
     reader.readAsDataURL(files[0]);
     reader.onload = function () {
         selectedfile = reader.result;
-        document.getElementById('mostrarImg').innerHTML = `<img src='${reader.result}' class='imagenesDisplay' height="65%" width="65%">`
+        document.getElementById('mostrarImg').innerHTML = `
+        <img id="img01" src='${reader.result}' class='imagenesDisplay' style="width:100%;max-width:800px">`
     };
 
     document.getElementById('code').value = inCode;
@@ -228,4 +213,31 @@ function cargarDatos() {
     document.getElementById('price').value = inPrice;
     document.getElementById('lab').value = inLab;
 
+}
+
+
+function getTableData() {
+    //table
+    var oTable = document.getElementById('tablaDosis');
+    //rows of table length
+    var rowLength = oTable.rows.length;
+
+    //loops rows    
+    for (i = 1; i < rowLength; i++) {
+
+        //cells of current row
+        var oCells = oTable.rows.item(i).cells;
+
+        //gets amount of cells of current row
+        var cellLength = oCells.length - 1;
+
+        //loops through each cell in current row
+            var cellVal = $('#dosis' + i).val();
+            var cellVal2 = $('#product_price' + i).val();
+
+            //oCells.item(j).value;
+            console.log(cellVal);
+            console.log(cellVal2);
+
+    }
 }
