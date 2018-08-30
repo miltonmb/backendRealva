@@ -106,7 +106,10 @@
         });
     </script>
     <!-- /sidebar -->
+
+    <!--Body-->
     <div class="container">
+        <!--Form-->
         <div class="ui-block">
             <div class="ui-block-title">
                 <h1 class="title">Productos</h1>
@@ -232,21 +235,25 @@
 
                             <div class="form-group">
                                 <table id="tablaDosis" style="width:100%">
-                                    <tr>
-                                        <th>Presentación(Dosis)</th>
-                                        <th>Precio</th>
-                                    </tr>
-                                    <tr id="rowDosis1">
-                                        <td> <input type="text" id="dosis1" name="product_dosis1" class="form-control" required="required"
-                                                placeholder="Presentación">
-                                        </td>
-                                        <td><input step="any" min="0" value="0.00" type="number" id="product_price1" class="form-control"
-                                                required="required">
-                                        </td>
-                                        <td>
-                                            <button id="rowDosis1" type="button" class="btn btn-danger" onclick="removeRow(this)">-</button>
-                                        </td>
-                                    </tr>
+                                    <thead>
+                                        <tr>
+                                            <th>Presentación(Dosis)</th>
+                                            <th>Precio</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody >
+                                        <tr id="rowDosis1">
+                                            <td> <input type="text" id="dosis1" name="product_dosis1" class="form-control"
+                                                    required="required" placeholder="Presentación">
+                                            </td>
+                                            <td><input step="any" min="0" value="0.00" type="number" id="product_price1"
+                                                    class="form-control" required="required">
+                                            </td>
+                                            <td>
+                                                <button id="rowDosis1" type="button" class="btn btn-danger" onclick="removeRow(this)">-</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
                                 </table>
                                 <button id="btnAddRow" type="button" class="btn btn-success" onclick="addRow()">+</button>
                             </div>
@@ -274,6 +281,9 @@
                 <!-- ... end Personal Information Form  -->
             </div>
         </div>
+        <!--Form-->
+
+        <!--modal-->
         <div class="w3-container">
             <div id="id01" class="w3-modal">
                 <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
@@ -341,17 +351,22 @@
                                 <b>Laboratorio</b>
                             </label>
                             <input id='lab' class="w3-input w3-border w3-margin-bottom" type="text" name="lab" disabled required>
+                            <table id="tablaDos" style="width:100%" type="text" name="lab" disabled required>
+                            </table>
                         </div>
                     </form>
 
                     <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-                        <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+                        <button onclick="cerrarModal()" type="button" class="w3-button w3-red">Cancel</button>
                         <button onclick="submitOrder()" type="button" class="w3-button w3-green">Aceptar</button>
                     </div>
                 </div>
             </div>
         </div>
+        <!--modal-->
     </div>
+    <!--Body-->
+
 </body>
 
 </html>
