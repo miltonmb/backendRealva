@@ -155,7 +155,7 @@ function addRow() {
     /*input step="any" min="0" value="0.00" type="number" id="product_price0" class="form-control"
     required="required"> precio */
     var precioBox = document.createElement("input");
-    precioBox.setAttribute("step", "any");
+    precioBox.setAttribute("step", "0.01");
     precioBox.setAttribute("type", "number");
     precioBox.setAttribute("id", "product_price" + currentIndex);
     precioBox.setAttribute("class", "form-control");
@@ -238,7 +238,7 @@ function cargarDatos() {
 
     newRow += `<tr>
     <th>Presentación(Dosis)</th>
-    <th>Precio</th>
+    <th>Precio(Lps)</th>
     </tr>`;
     for (i = 1; i < rowLength; i++) {
         var cellVal = $('#dosis' + i).val();
