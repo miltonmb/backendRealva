@@ -8,14 +8,12 @@
     <title>Backend</title>
     <link href="assets/web-analytics/style.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
         crossorigin="anonymous">
     <link rel="stylesheet" href="dist/css/bootstrap-select.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
@@ -121,7 +119,7 @@
                         <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="form-group">
                                 <label for="disabledTextInput">Clave</label>
-                                <input type="text" name="product_code" id="codigo" class="form-control" required="required" placeholder="Clave">
+                                <input required type="text" name="product_code" id="codigo" class="form-control" required="required" placeholder="Clave">
                             </div>
                             <!--
                             <div class="form-group">
@@ -131,7 +129,7 @@
                             -->
                             <div class="form-group">
                                 <label for="disabledTextInput">Especies</label>
-                                <select class="selectpicker show-menu-arrow form-control" multiple id="product_species_list">
+                                <select required class="selectpicker show-menu-arrow form-control" multiple id="product_species_list" rez>
                                     <option value="CANINOS">CANINOS</option>
                                     <option value="BOVINOS">BOVINOS</option>
                                     <option value="EQUINOS">EQUINOS</option>
@@ -177,7 +175,7 @@
                         <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="form-group">
                                 <label for="disabledTextInput">Nombre</label>
-                                <input type="text" name="product_name" id="nombre" class="form-control" required="required" placeholder="Nombre">
+                                <input required type="text" name="product_name" id="nombre" class="form-control" required="required" placeholder="Nombre">
                             </div>
                             <div class="form-group">
                                 <label>Unidad Tecnica</label>
@@ -241,7 +239,7 @@
                                             <th>Precio(Lps)</th>
                                         </tr>
                                     </thead>
-                                    <tbody >
+                                    <tbody>
                                         <tr id="rowDosis1">
                                             <td> <input type="text" id="dosis1" name="product_dosis1" class="form-control"
                                                     required="required" placeholder="Presentación">
@@ -267,7 +265,7 @@
 
                         <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="form-group">
-                                <button id="btnSubir" type="button" class="btn btn-success" onclick="document.getElementById('id01').style.display='block';cargarDatos()">Agregar</button>
+                                <button id="btnSubir" type="button" class="btn btn-success" onclick="abrirModal()">Agregar</button>
                             </div>
                             <div class="form-group">
                                 <button id="testTablle" type="button" class="btn btn-success" onclick="getTableData()">Ver</button>
@@ -290,7 +288,7 @@
 
                     <div class="w3-center">
                         <br>
-                        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright"
+                        <span onclick="cerrarModal()" class="w3-button w3-xlarge w3-hover-red w3-display-topright"
                             title="Close Modal">&times;</span>
                     </div>
                     <div id="mostrarImg"></div>

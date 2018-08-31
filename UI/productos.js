@@ -248,11 +248,28 @@ function cargarDatos() {
     document.getElementById('tablaDos').innerHTML = newRow;
 }
 
+function abrirModal() {
+    var inCode = document.forms["myForm"]["product_code"].value;
+    var inName = document.forms["myForm"]["product_name"].value;
+    var inDescription = document.forms["myForm"]["product_description"].value;
+    var inIndications = document.forms["myForm"]["product_indications"].value;
+    var inContraindication = document.forms["myForm"]["product_contraindication"].value;
+    var inCateg = $('#product_categ').val();
+    var inTypeUse = $('#typeUse').val();
+    var inUnidTec = $('#product_unidTec').val();
+    var inSpecies = $('#product_species_list').val();
+    var inLab = $('#product_labo').val();
+    if (inCode == "") {
+        return false;
+    }
+   
+    document.getElementById('id01').style.display='block';
+    cargarDatos();
+}
+
 
 function cerrarModal() {
     document.getElementById('id01').style.display = 'none';
-    var new_tbody = document.createElement('tbody');
-    $('#body1').replaceWith(new_tbody);
 }
 
 function getTableData() {
