@@ -22,12 +22,8 @@
     <script src="assets/jquery/jquery-3.1.0.min.js"></script>
     <script src="assets/tether/tether.min.js"></script>
     <script src="assets/bootstrap/bootstrap4-alpha3.min.js"></script>
-    <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    <script src="assets/web-analytics/real-time.js"></script>
-    <script src="backend.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script src="jquery-3.3.1.min.js"></script>
-    <script src="productos.js"></script>
     <script src="cargarProductos2.js"></script>
 
     </body>
@@ -116,7 +112,7 @@
     <div class="page">
         <div id="main">
             <h1>Lista de productos</h1>
-            <div id=productRows class="row"></div>
+            <div id="productRows" class="row"></div>
             <div class="links">
                 <button onclick="chargePrevPage()">Anterior</button>
                 <div id="htmlPaginaActual" class="paginacionElm">
@@ -142,49 +138,55 @@
                             <label>
                                 <b>Código</b>
                             </label>
-                            <input id='code' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="code" required>
+                            <input id='code' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="code" disabled required>
+                            <label>
+                                <b>Visitas</b>
+                            </label>
+                            <input id='visits' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="visits" disabled required>
+
                             <label>
                                 <b>Nombre</b>
                             </label>
-                            <input id='name' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="name" required>
+                            <input id='name' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="name" disabled required>
                             <label>
                                 <b>Descripción</b>
                             </label>
                             <textarea rows="4" cols="50" id='description' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="description"
-                                required></textarea>
+                                disabled required></textarea>
                             <label>
                                 <b>Indicaciones</b>
                             </label>
-                            <input id='indications' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="indications" required>
+                            <textarea rows="4" cols="50" id='indications' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="indications"
+                                disabled required></textarea>
                             <label>
                                 <b>Contraindicaciones</b>
                             </label>
-                            <input id='contraindication' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="contraindication"
-                                required>
-                            <label>
-                                <b>Dosis</b>
-                            </label>
-                            <input id='dosis' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="dosis" required>
+                            <textarea rows="4" cols="50" id='contraindication' class="w3-input w3-border w3-margin-bottom" type="text" placeholder=""
+                                name="contraindication" disabled required></textarea>
                             <label>
                                 <b>Categoría</b>
                             </label>
-                            <input id='categ' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="categ" required>
+                            <input id='categ' class="w3-input w3-border w3-margin-bottom" type="text" name="categ" disabled required>
                             <label>
                                 <b>Tipo de uso</b>
                             </label>
-                            <input id='typeUse' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="typeUse" required>
+                            <textarea rows="4" cols="50" id='typeUseModal' class="w3-input w3-border w3-margin-bottom" type="text" name="typeUseModal"
+                                disabled required>
+                            </textarea>
                             <label>
                                 <b>Unidad técnica</b>
                             </label>
-                            <input id='unidTec' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="unidTec" required>
+                            <input id='unidTec' class="w3-input w3-border w3-margin-bottom" type="text" name="unidTec" disabled required>
                             <label>
                                 <b>Especie</b>
                             </label>
-                            <input id='species' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="species" required>
+                            <input id='species' class="w3-input w3-border w3-margin-bottom" type="text" name="species" disabled required>
                             <label>
-                                <b>Precio</b>
+                                <b>Laboratorio</b>
                             </label>
-                            <input id='price' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="price" required>
+                            <input id='lab' class="w3-input w3-border w3-margin-bottom" type="text" name="lab" disabled required>
+                            <table id="tablaDos" style="width:100%" type="text" name="lab" disabled required>
+                            </table>
                         </div>
                     </form>
 

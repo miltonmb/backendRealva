@@ -267,8 +267,7 @@
 
                     <div class="w3-center">
                         <br>
-                        <span onclick="cerrarModal()" class="w3-button w3-xlarge w3-hover-red w3-display-topright"
-                            title="Close Modal">&times;</span>
+                        <span onclick="cerrarModal()" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
                     </div>
                     <div id="mostrarImg"></div>
                     <form class="w3-container" action="/action_page.php">
@@ -289,19 +288,13 @@
                             <label>
                                 <b>Indicaciones</b>
                             </label>
-                            <input id='indications' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="indications" disabled
-                                required>
+                            <textarea rows="4" cols="50" id='indications' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="indications"
+                                disabled required></textarea>
                             <label>
                                 <b>Contraindicaciones</b>
                             </label>
-                            <input id='contraindication' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="contraindication"
-                                disabled required>
-                            <!--
-                            <label>
-                                <b>Dosis</b>
-                            </label>
-                            <input id='dosisModal' class="w3-input w3-border w3-margin-bottom" type="text" name="dosisMod" disabled required>
-                            -->
+                            <textarea rows="4" cols="50" id='contraindication' class="w3-input w3-border w3-margin-bottom" type="text" placeholder=""
+                                name="contraindication" disabled required></textarea>
                             <label>
                                 <b>Categoría</b>
                             </label>
@@ -309,7 +302,9 @@
                             <label>
                                 <b>Tipo de uso</b>
                             </label>
-                            <input id='typeUseModal' class="w3-input w3-border w3-margin-bottom" type="text" name="typeUseMod" disabled required>
+                            <textarea rows="4" cols="50" id='typeUseModal' class="w3-input w3-border w3-margin-bottom" type="text" name="typeUseMod"
+                                disabled required>
+                            </textarea>
                             <label>
                                 <b>Unidad técnica</b>
                             </label>
@@ -318,12 +313,6 @@
                                 <b>Especie</b>
                             </label>
                             <input id='species' class="w3-input w3-border w3-margin-bottom" type="text" name="species" disabled required>
-                            <!--
-                                <label>
-                                <b>Precio</b>
-                            </label>
-                            <input id='price' class="w3-input w3-border w3-margin-bottom" type="text" name="price" disabled required>
-                            -->
                             <label>
                                 <b>Laboratorio</b>
                             </label>

@@ -23,3 +23,9 @@
     overflow: hidden;
     overflow-y: scroll;
 }
+#bigtext2{
+    text-overflow: ellipsis;
+    height: 50px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
