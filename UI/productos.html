@@ -121,12 +121,6 @@
                                 <label for="disabledTextInput">Clave</label>
                                 <input required type="text" name="product_code" id="codigo" class="form-control" required="required" placeholder="Clave">
                             </div>
-                            <!--
-                            <div class="form-group">
-                                <label for="disabledTextInput">Presentación(Dosis)</label>
-                                <input type="text" id="dosis" name="product_dosis" class="form-control" required="required" placeholder="Presentación">
-                            </div>
-                            -->
                             <div class="form-group">
                                 <label for="disabledTextInput">Especies</label>
                                 <select required class="selectpicker show-menu-arrow form-control" multiple id="product_species_list" rez>
@@ -150,23 +144,23 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="disabledTextInput">Categorias</label>
-                                <select class="selectpicker show-menu-arrow form-control" multiple id="product_categ">
+                                <label for="disabledTextInput">Categorías</label>
+                                <select class="selectpicker show-menu-arrow form-control" data-size="5" multiple id="product_categ">
                                     <option value="ANTIINFLAMATORIO">ANTIINFLAMATORIO</option>
-                                    <option value="ANTIBIOTICO">ANTIBIOTICO</option>
-                                    <option value="ANTIDOTO">ANTIDOTO</option>
-                                    <option value="ANABOLICO">ANABOLICO</option>
-                                    <option value="ANESTESICOS Y EUTANASICOS">ANESTESICOS Y EUTANASICOS</option>
+                                    <option value="ANTIBIÓTICO">ANTIBIÓTICO</option>
+                                    <option value="ANTÍDOTO">ANTÍDOTO</option>
+                                    <option value="ANABÓLICO">ANABÓLICO</option>
+                                    <option value="ANESTÉSICOS Y EUTANÁSICOS">ANESTÉSICOS Y EUTANÁSICOS</option>
                                     <option value="VITAMINAS Y MINERALES">VITAMINAS Y MINERALES</option>
                                     <option value="ANTIPARASITARIO">ANTIPARASITARIO</option>
-                                    <option value="OTICOS Y OFTALMICOS">OTICOS Y OFTALMICOS</option>
+                                    <option value="ÓTICOS Y OFTÁLMICOS">ÓTICOS Y OFTÁLMICOS</option>
                                     <option value="TODAS ESPECIES">TODAS ESPECIES</option>
-                                    <option value="ANTISEPTICO Y DESINFECTANTE">ANTISEPTICO Y DESINFECTANTE</option>
-                                    <option value="DERMATOLOGICOS">DERMATOLOGICOS</option>
+                                    <option value="ANTISÉPTICO Y DESINFECTANTE">ANTISÉPTICO Y DESINFECTANTE</option>
+                                    <option value="DERMATOLÓGICOS">DERMATOLÓGICOS</option>
                                     <option value="GASTROINTESTINALES">GASTROINTESTINALES</option>
-                                    <option value="COSMETICO">COSMETICO</option>
-                                    <option value="IDENTIFICACION Y ACCESORIOS">IDENTIFICACION Y ACCESORIOS</option>
-                                    <option value="ANTIHEMORRAGICOS">ANTIHEMORRAGICOS</option>
+                                    <option value="COSMÉTICO">COSMÉTICO</option>
+                                    <option value="IDENTIFICACIÓN Y ACCESORIOS">IDENTIFICACIÓN Y ACCESORIOS</option>
+                                    <option value="ANTIHEMORRÁGICOS">ANTIHEMORRÁGICOS</option>
                                     <option value="HORMONALES">HORMONALES</option>
                                 </select>
                             </div>
@@ -178,18 +172,12 @@
                                 <input required type="text" name="product_name" id="nombre" class="form-control" required="required" placeholder="Nombre">
                             </div>
                             <div class="form-group">
-                                <label>Unidad Tecnica</label>
+                                <label>Unidad Técnica</label>
                                 <select class="selectpicker show-menu-arrow form-control" multiple id="product_unidTec">
-                                    <option value="ANIMALES DE PRODUCCION">ANIMALES DE PRODUCCION</option>
+                                    <option value="ANIMALES DE PRODUCCIÓN">ANIMALES DE PRODUCCIÓN</option>
                                     <option value="ANIMALES DE COMPAÑÍA">ANIMALES DE COMPAÑÍA</option>
                                 </select>
                             </div>
-                            <!--
-                            <div class="form-group">
-                                <label for="precio">Precio Lps.</label>
-                                <input step="any" min="0" value="0.00" type="number" id="product_price" class="form-control" required="required" placeholder="Disabled input">
-                            </div>
-                            -->
                             <div class="form-group">
                                 <label for="disabledTextInput">Laboratorio</label>
                                 <select class="selectpicker show-menu-arrow form-control" id="product_labo">
@@ -207,7 +195,7 @@
 
                         <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="form-group">
-                                <label for="disabledTextInput">Descripcion</label>
+                                <label for="disabledTextInput">Descripción</label>
                                 <textarea name="product_description" class="form-control" id="descripcion" rows="6"></textarea>
                             </div>
                             <div class="form-group">
@@ -226,11 +214,6 @@
                                 <label for="disabledTextInput">Tipo de producto y uso</label>
                                 <textarea name="product_type_use" class="form-control" id="typeUse" rows="6"></textarea>
                             </div>
-                            <div class="form-group">
-                                <label for="disabledTextInput">Indicaciones</label>
-                                <textarea class="form-control" id="indicaciones" rows="6"></textarea>
-                            </div>
-
                             <div class="form-group">
                                 <table id="tablaDosis" style="width:100%">
                                     <thead>
@@ -267,10 +250,6 @@
                             <div class="form-group">
                                 <button id="btnSubir" type="button" class="btn btn-success" onclick="abrirModal()">Agregar</button>
                             </div>
-                            <div class="form-group">
-                                <button id="testTablle" type="button" class="btn btn-success" onclick="getTableData()">Ver</button>
-                            </div>
-
                         </div>
 
                     </div>

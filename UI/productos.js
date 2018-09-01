@@ -14,10 +14,8 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 function submitOrder() {
-    //Grab order data from the form
     var inCode = document.forms["myForm"]["product_code"].value;
     var inName = document.forms["myForm"]["product_name"].value;
-    // var inDosis = document.forms["myForm"]["product_dosis"].value;
     var inDescription = document.forms["myForm"]["product_description"].value;
     var inIndications = document.forms["myForm"]["product_indications"].value;
     var inContraindication = document.forms["myForm"]["product_contraindication"].value;
@@ -25,92 +23,46 @@ function submitOrder() {
     var inTypeUse = $('#typeUse').val();
     var inUnidTec = $('#product_unidTec').val();
     var inSpecies = $('#product_species_list').val();
-    //  var inPrice = document.forms["myForm"]["product_price"].value;
     var inLab = $('#product_labo').val();
 
-    /*if (inCode == "") {
-        alert("Contraindicación Vacia");
-        return false;
-    }
-
-    if (inName == "") {
-        alert("Nombre Vacio");
-        return false;
-    }
-    if (inDosis == "") {
-        alert("Contraindicación Vacia");
-        return false;
-    }
-    if (inDescription == "") {
-        alert("Descripción Vacia");
-        return false;
-    }
-    if (inIndications == "") {
-        alert("Indicación Vacia");
-        return false;
-    }
-    if (inContraindication == "") {
-        alert("Contraindicación Vacia");
-        return false;
-    }
-    if (inCateg == "") {
-        alert("Categoría Vacia");
-        return false;
-    }
-
-    if (inTypeUse == "") {
-        alert("Uso Vacio");
-        return false;
-    }
-    if (inUnidTec == "") {
-        alert("Técnica Vacia");
-        return false;
-    }
-    if (inSpecies == "") {
-        alert("Especie Vacia");
-        return false;
-    }*/
     /*'push' (aka add) your order to the existing list 
     firebaseOrdersCollection.push(products);*/
-    if (selectedfile == null) {
 
-    } else {
+    var oTable = document.getElementById('tablaDosis');
+    var rowLength = oTable.rows.length;
+    var dosisList = [];
+    //  var precioList = [];
 
-        var oTable = document.getElementById('tablaDosis');
-        var rowLength = oTable.rows.length;
-        var dosisList = [];
-      //  var precioList = [];
-
-        for (i = 1; i < rowLength; i++) {
-            var cellVal = $('#dosis' + i).val();
-            var cellVal2 = $('#product_price' + i).val();
-            let temp = {dosis:cellVal,precio:cellVal2}
-            dosisList.push(temp);
+    for (i = 1; i < rowLength; i++) {
+        var cellVal = $('#dosis' + i).val();
+        var cellVal2 = $('#product_price' + i).val();
+        let temp = { dosis: cellVal, precio: cellVal2 }
+        dosisList.push(temp);
         //    precioList.push(cellVal2);
-        }
-
-        const newProduct = firebase.database().ref('/productos').push();
-        newProduct.set({
-            imagen: selectedfile,
-            codigo: inCode,
-            nombre: inName,
-            descripcion: inDescription,
-            indicacion: inIndications,
-            contraindicacion: inContraindication,
-            //dosis: inDosis,
-            presentacion: dosisList,
-          //  precio:precioList,
-            categ: inCateg,
-            tipoUso: inTypeUse,
-            especie: inSpecies,
-            unidTec: inUnidTec,
-            //precio: inPrice,
-            laboratorio: inLab,
-            visita: 0
-        });
-        alert("Se agrego con éxito!");
-        cerrarModal();
     }
+
+    const newProduct = firebase.database().ref('/productos').push();
+    newProduct.set({
+        imagen: selectedfile,
+        codigo: inCode,
+        nombre: inName,
+        descripcion: inDescription,
+        indicacion: inIndications,
+        contraindicacion: inContraindication,
+        //dosis: inDosis,
+        presentacion: dosisList,
+        //  precio:precioList,
+        categ: inCateg,
+        tipoUso: inTypeUse,
+        especie: inSpecies,
+        unidTec: inUnidTec,
+        //precio: inPrice,
+        laboratorio: inLab,
+        visita: 0
+    });
+    alert("Se agrego con éxito!");
+    cerrarModal();
+    clearInputs();
     //'products' is the name of the 'collection' (aka database table)
     document.getElementById("btnSubir").reset();
 };
@@ -118,10 +70,8 @@ function submitOrder() {
 function handleFileInput() {
     var files = document.getElementById('imagenProducto').files;
 
-    console.log("handle");
     if (files.length > 0) {
         getBase64(files[0]);
-        console.log("handle if");
     }
 }
 function getBase64(file) {
@@ -134,6 +84,35 @@ function getBase64(file) {
     reader.onerror = function (error) {
         console.log('Error: ', error);
     };
+}
+
+function clearInputs() {
+    $('#codigo').val("");
+    $('#nombre').val("");
+    $('#descripcion').val("");
+    $('#indicaciones').val("");
+    $('#contraIndicaciones').val("");
+    $('#typeUse').val("");
+
+    $("#product_categ").val('default');
+    $("#product_categ").selectpicker("refresh");
+
+    $("#product_unidTec").val('default');
+    $("#product_unidTec").selectpicker("refresh");
+
+    $("#product_species_list").val('default');
+    $("#product_species_list").selectpicker("refresh");
+
+    var oTable = document.getElementById('tablaDosis');
+    var rowLength = oTable.rows.length;
+    $('#dosis1').val("");
+    $('#product_price1').val("0.00");
+
+    for (i = 2; i < rowLength; i++) {
+        var element = document.getElementById("rowDosis" + i);
+        element.parentNode.removeChild(element);
+    }
+
 }
 
 function addRow() {
@@ -184,7 +163,6 @@ function addRow() {
 
 function removeRow(that) {
     if (confirm("Eliminar?")) {
-        console.log(that.id);
         var element = document.getElementById(that.id);
         element.parentNode.removeChild(element);
     }
@@ -259,11 +237,74 @@ function abrirModal() {
     var inUnidTec = $('#product_unidTec').val();
     var inSpecies = $('#product_species_list').val();
     var inLab = $('#product_labo').val();
+    var error = false;
+    //border: 1px solid #ccc; default
     if (inCode == "") {
+        alert("No tiene clave");
+        error = true;
+    }
+    if (inName == "") {
+        alert("No tiene nombre");
+        error = true;
+    }
+    if (inDescription == "") {
+        alert("No tiene descripción");
+        error = true;
+    }
+    if (inIndications == "") {
+        alert("No tiene indicación");
+        error = true;
+    }
+    if (inContraindication == "") {
+        alert("No tiene contraindicación");
+        error = true;
+    }
+    if (inCateg == "") {
+        alert("No tiene categoría");
+        error = true;
+    }
+    if (inTypeUse == "") {
+        alert("No tiene tipo de uso");
+        error = true;
+    }
+    if (inUnidTec == "") {
+        alert("No tiene unidad técnica");
+        error = true;
+    }
+    if (inSpecies == "") {
+        alert("No tiene especie");
+        error = true;
+    }
+    /*
+    if (inLab == "") {
+        alert("No tiene laboratorio");
+        error = true;
+    }*/
+    if (selectedfile == null) {
+        alert("No hay una fota")
+    }
+    var oTable = document.getElementById('tablaDosis');
+    //rows of table length
+    var rowLength = oTable.rows.length;
+
+    //loops rows    
+    for (i = 1; i < rowLength; i++) {
+        var cellVal = $('#dosis' + i).val();
+        var cellVal2 = $('#product_price' + i).val();
+        if (cellVal == "") {
+            alert("No tiene dosis");
+            error = true;
+        }
+        if (parseFloat(cellVal2) == parseFloat(0)) {
+            alert("el precio es 0");
+            error = true;
+        }
+    }
+    if (error) {
         return false;
     }
-   
-    document.getElementById('id01').style.display='block';
+
+    document.getElementById('id01').style.display = 'block';
     cargarDatos();
 }
 
@@ -274,26 +315,5 @@ function cerrarModal() {
 
 function getTableData() {
     //table
-    var oTable = document.getElementById('tablaDosis');
-    //rows of table length
-    var rowLength = oTable.rows.length;
-
-    //loops rows    
-    for (i = 1; i < rowLength; i++) {
-
-        //cells of current row
-        var oCells = oTable.rows.item(i).cells;
-
-        //gets amount of cells of current row
-        var cellLength = oCells.length - 1;
-
-        //loops through each cell in current row
-        var cellVal = $('#dosis' + i).val();
-        var cellVal2 = $('#product_price' + i).val();
-
-        //oCells.item(j).value;
-        console.log(cellVal);
-        console.log(cellVal2);
-
-    }
+    clearInputs();
 }
