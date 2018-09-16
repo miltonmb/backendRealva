@@ -25,10 +25,13 @@ function uploadFile() {
     if (selectedfile == null) {
 
     } else {
+        var fileInput = document.getElementById('archivosDescarga');   
+        var filename = fileInput.files[0].name;
         const newImage = firebase.database().ref('/descargas').push();
         newImage.set({
             id: newImage.key,
-            imagen: selectedfile
+            imagen: selectedfile,
+            nombre: filename
         });
         getImage();
         alert("Se agrego con éxito!");
