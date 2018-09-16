@@ -13,10 +13,11 @@ window.onload = function () {
 }
 function chargeImage() {
     let prueba = '';
+    document.getElementById('listaimagenes').innerHTML = prueba;
     let element;
     for (let i = 0; i < imagen.length; i++) {
         element = imagen[i];
-        prueba += `<div class='card'><a href='${imagen[i].imagen}' download><img src='https://image.flaticon.com/icons/png/512/259/259607.png' class='imagenesDisplay'></a> <div class='container'><i class='fa fa-trash' id='${imagen[i].id}' onclick=onDelete(this.id)></i></div></div>`;
+        prueba += `<div class='card'><a href='${imagen[i].imagen}' download><img src='https://image.flaticon.com/icons/png/512/259/259607.png' class='imagenesDisplay'></a> <div class='container'><i class='fa fa-trash icon' id='${imagen[i].id}' onclick=onDelete(this.id)></i></div></div>`;
     }
     document.getElementById('listaimagenes').innerHTML = prueba;
 }
