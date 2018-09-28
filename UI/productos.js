@@ -1,4 +1,5 @@
 var selectedfile;
+var selectedfile2;
 var imagen = [];
 var imageRef;
 var config = {
@@ -44,6 +45,7 @@ function submitOrder() {
     const newProduct = firebase.database().ref('/productos').push();
     newProduct.set({
         imagen: selectedfile,
+        ficha: selectedfile2,
         codigo: inCode,
         nombre: inName,
         descripcion: inDescription,
@@ -85,7 +87,24 @@ function getBase64(file) {
         console.log('Error: ', error);
     };
 }
+function handleFileInputFi() {
+    var files = document.getElementById('fichaProducto').files;
+    if (files.length > 0) {
+        getBase64Fi(files[0]);
+    }
+}
+function getBase64Fi(file) {
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+        selectedfile2 = reader.result;
+        //document.getElementById('mostrarimagen').innerHTML = `<img src='${reader.result}'>;
 
+    };
+    reader.onerror = function (error) {
+        console.log('Error: ', error);
+    };
+}
 function clearInputs() {
     $('#codigo').val("");
     $('#nombre').val("");
