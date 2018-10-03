@@ -1,1 +1,1 @@
-<?php header('Location: UI/web-analytics-real-time.html') ; ?>
+<?php header('Location: /UI/web-analytics-real-time.html') ; ?>
