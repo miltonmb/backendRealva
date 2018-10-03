@@ -1,1 +1,1 @@
-<?php header('Location: /UI/web-analytics-real-time.html') ; ?>
+<?php include_once('index.html') ; ?>
