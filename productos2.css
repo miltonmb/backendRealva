@@ -1,0 +1,31 @@
+#productRows{
+    display: flex;
+  flex-wrap: wrap;
+}
+
+.card{
+  padding: 8px;
+  width: 300px;
+  box-shadow: 0 1px 30px rgba(0,0,0,.4);
+  display: block;
+  background-color: #fff;
+  border-radius: 4px;
+  margin: 6px;
+}
+
+.card-title{
+    font-weight: bold;
+}
+
+#bigtext{
+    text-overflow: ellipsis;
+    height: 50px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#bigtext2{
+    text-overflow: ellipsis;
+    height: 50px;
+    overflow: hidden;
+    overflow-y: scroll;
+}

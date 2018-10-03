@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Backend</title>
+    <!-- stylesheets -->
+    <link href="assets/fonts/font-roboto.css" rel="stylesheet">
+    <link href="assets/bootstrap/bootstrap4-alpha3.min.css" rel="stylesheet">
+    <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
+    <link href="assets/web-analytics/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- scripts -->
+    <script src="assets/jquery/jquery-3.1.0.min.js"></script>
+    <script src="assets/tether/tether.min.js"></script>
+    <script src="assets/bootstrap/bootstrap4-alpha3.min.js"></script>
+    <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="assets/web-analytics/real-time.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="firebase.js"></script>
+    </body>
+</head>
+
+<body>
+    <!-- header -->
+    <nav class="navbar navbar-fixed-top" id="header">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <div id="sidebar-toggle-button">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </div>
+                <div class="brand">
+                    <a href="clientes.html">
+                        <span class="hidden-xs-down m-r-3">Dashboard</span>
+                        <span class="lead">Clientes</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+    <!-- /header -->
+
+    <!-- sidebar -->
+    <div class="sidebar-toggle" id="sidebar">
+        <ul class="nav nav-sidebar">
+            <li>
+                <a href="web-analytics-real-time.html">
+                    <i class="fa fa-clock-o fa-lg fa-fw" aria-hidden="true"></i>
+                    <span>Tiempo Real</span>
+                </a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+                <a href="principal.html">
+                    <i class="far fa-images fa-lg fa-fw" aria-hidden="true"></i>
+                    <span>Carrusel Principal</span>
+                </a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+                <a href="ofertas.html">
+                    <i class="fa fa-photo fa-lg fa-fw" aria-hidden="true"></i>
+                    <span>Carrusel de Ofertas</span>
+                </a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+                <a href="descargas.html">
+                    <i class="fa fa-download fa-lg fa-fw" aria-hidden="true"></i>
+                    <span>Descargas</span>
+                </a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+                <a href="clientes.html" class="active">
+                    <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+                    <span>Clientes</span>
+                </a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+                <a href="productos.html">
+                    <i class="fas fa-shopping-cart fa-lg fa-fw" aria-hidden="true"></i>
+                    <span>Productos</span>
+                </a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+                <a href="listaproductos.html">
+                    <i class="fas fa-clipboard-list fa-lg fa-fw" aria-hidden="true"></i>
+                    <span>Listar productos</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <script>
+        $('#sidebar-toggle-button').on('click', function () {
+            $('#sidebar').toggleClass('sidebar-toggle');
+            $('#page-content-wrapper').toggleClass('page-content-toggle');
+        });
+    </script>
+    <!-- /sidebar -->
+
+    <div id="main">
+        <h1>Clientes</h1>
+        <div>
+            <input id='busqueda' type="text" placeholder="Search.." name="search">
+            <button onclick="buscar()">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+        <div id="tabla">
+            <table class="blueTable">
+                <thead>
+                    <tr>
+                        <th>Clave Cliente</th>
+                        <th>Nombre Empresa</th>
+                        <th>Nombre Representante</th>
+                        <th>RTN</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">
+                            <div class="links">
+                                <button onclick="chargeNextPage()">Siguiente</button>
+                                <div id="htmlPaginaActual" class="paginacionElm">
+                                    <p>Página Actual</p>
+                                </div>
+                                <button onclick="chargePrevPage()">Anterior</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+                <tbody id="clientRows"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="w3-container">
+        <div id="id01" class="w3-modal">
+            <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+                <div class="w3-center">
+                    <br>
+                    <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright"
+                        title="Close Modal">&times;</span>
+                </div>
+
+                <form class="w3-container" action="/action_page.php">
+                    <div class="w3-section">
+                        <label>
+                            <b>Clasificacion</b>
+                        </label>
+                        <input id='Clasificacion' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="usrname"
+                            required>
+                        <label>
+                            <b>ClaveCliente</b>
+                        </label>
+                        <input id='ClaveCliente' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="ClaveCliente"
+                            required>
+                        <label>
+                            <b>Correo</b>
+                        </label>
+                        <input id='Correo' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="Correo" required>
+                        <label>
+                            <b>Direccion</b>
+                        </label>
+                        <textarea rows="4" cols="50" id='Direccion' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="description"
+                            required></textarea>
+                        <label>
+                            <b>Estatus</b>
+                        </label>
+                        <input id='Estatus' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="Estatus" required>
+                        <label>
+                            <b>NombreEmpresa</b>
+                        </label>
+                        <input id='NombreEmpresa' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="NombreEmpresa"
+                            required>
+                        <label>
+                            <b>NombreRepresentante</b>
+                        </label>
+                        <input id='NombreRepresentante' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="NombreRepresentante"
+                            required>
+                        <label>
+                            <b>RTN</b>
+                        </label>
+                        <input id='RTN' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="RTN" required>
+                        <label>
+                            <b>Saldo</b>
+                        </label>
+                        <input id='Saldo' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="Saldo" required>
+                        <label>
+                            <b>Telefono1</b>
+                        </label>
+                        <input id='Telefono1' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="Telefono1"
+                            required>
+                        <label>
+                            <b>Telefono2</b>
+                        </label>
+                        <input id='Telefono2' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="Telefono2"
+                            required>
+                    </div>
+                </form>
+
+                <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+                    <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+                    <button onclick="onAcept(tempcliente.id)" type="button" class="w3-button w3-green">Aceptar</button>
+                    <button onclick="document.getElementById('id02').style.display='block'" type="button" class="w3-button w3-green">Modificar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="id02" class="w3-modal">
+        <div class="w3-modal-content">
+            <header class="w3-container w3-light-grey">
+                <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                <h2>Desea Modificar este cliente?</h2>
+            </header>
+            <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+                <button onclick="document.getElementById('id02').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+                <button onclick="onModificar(tempcliente.id);document.getElementById('id02').style.display='none'" type="button" class="w3-button w3-green">Aceptar</button>
+            </div>
+        </div>
+    </div>
+    <div id="id03" class="w3-modal">
+        <div class="w3-modal-content">
+            <header class="w3-container w3-light-grey">
+                <span onclick="document.getElementById('id03').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                <h2>Cliente No Existe</h2>
+            </header>
+            <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+                <button onclick="document.getElementById('id03').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

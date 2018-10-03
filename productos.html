@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=devide-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Backend</title>
+    <link href="assets/fonts/font-roboto.css" rel="stylesheet">
+    <link href="assets/bootstrap/bootstrap4-alpha3.min.css" rel="stylesheet">
+    <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/web-analytics/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="dist/css/bootstrap-select.css">
+    
+    
+    
+    <script src="assets/bootstrap/bootstrap4-alpha3.min.js"></script>
+   
+    <script src="assets/tether/tether.min.js"></script>
+    <script src="assets/jquery/jquery-3.1.0.min.js"></script>
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="productos.js"></script>
+    <script src="dist/js/bootstrap-select.js"></script>
+
+    </body>
+</head>
+
+<body>
+    <!-- header -->
+    <nav class="navbar navbar-fixed-top" id="header">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <div id="sidebar-toggle-button">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </div>
+                <div class="brand">
+                    <a href="productos.html">
+                        <span class="hidden-xs-down m-r-3">Dashboard</span>
+                        <span class="lead">Productos</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+    <!-- /header -->
+
+    <!-- sidebar -->
+    <div class="sidebar-toggle" id="sidebar">
+        <ul class="nav nav-sidebar">
+            <li>
+                <a href="web-analytics-real-time.html">
+                    <i class="fa fa-clock-o fa-lg fa-fw" aria-hidden="true"></i>
+                    <span>Tiempo Real</span>
+                </a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+                <a href="principal.html">
+                    <i class="far fa-images fa-lg fa-fw" aria-hidden="true"></i>
+                    <span>Carrusel Principal</span>
+                </a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+                <a href="ofertas.html">
+                    <i class="fa fa-photo fa-lg fa-fw" aria-hidden="true"></i>
+                    <span>Carrusel de Ofertas</span>
+                </a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+                <a href="descargas.html">
+                    <i class="fa fa-download fa-lg fa-fw" aria-hidden="true"></i>
+                    <span>Descargas</span>
+                </a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+                <a href="clientes.html">
+                    <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+                    <span>Clientes</span>
+                </a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+                <a href="productos.html" class="active">
+                    <i class="fas fa-shopping-cart fa-lg fa-fw" aria-hidden="true"></i>
+                    <span>Productos</span>
+                </a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+                <a href="listaproductos.html">
+                    <i class="fas fa-clipboard-list fa-lg fa-fw" aria-hidden="true"></i>
+                    <span>Listar productos</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <script>
+        $('#sidebar-toggle-button').on('click', function () {
+            $('#sidebar').toggleClass('sidebar-toggle');
+            $('#page-content-wrapper').toggleClass('page-content-toggle');
+        });
+    </script>
+    <!-- /sidebar -->
+
+    <!--Body-->
+    <div class="container">
+        <!--Form-->
+        <div class="ui-block">
+            <div class="ui-block-title">
+                <h1 class="title">Productos</h1>
+            </div>
+            <div class="ui-block-content">
+                <!-- Personal Information Form  -->
+                <form id="myForm">
+                    <div class="row">
+                        <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="form-group">
+                                <label for="disabledTextInput">Clave</label>
+                                <input required type="text" name="product_code" id="codigo" class="form-control" required="required" placeholder="Clave">
+                            </div>
+                            <div class="form-group">
+                                <label for="disabledTextInput">Especies</label>
+                                <select required class="selectpicker show-menu-arrow form-control" multiple id="product_species_list" rez>
+                                    <option value="CANINOS">CANINOS</option>
+                                    <option value="BOVINOS">BOVINOS</option>
+                                    <option value="EQUINOS">EQUINOS</option>
+                                    <option value="OVINOS">OVINOS</option>
+                                    <option value="CAPRINOS">CAPRINOS</option>
+                                    <option value="FELINOS">FELINOS</option>
+                                    <option value="ZORROS">ZORROS</option>
+                                    <option value="HURONES">HURONES</option>
+                                    <option value="TODAS ESPECIES">TODA ESPECIE</option>
+                                    <option value="PORCINOS">PORCINOS</option>
+                                    <option value="CONEJOS">CONEJOS</option>|
+                                    <option value="AVES DE ENGORDE">AVES DE ENGORDE</option>
+                                    <option value="AVES DE POSTURA">AVES DE POSTURA</option>
+                                    <option value="AVES DE TRASPATIO">AVES DE TRASPATIO</option>
+                                    <option value="PAVOS">PAVOS</option>
+                                    <option value="GALLOS DE PELEA">GALLOS DE PELEA</option>
+                                    <option value="AVES">AVES</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="disabledTextInput">Categorías</label>
+                                <select class="selectpicker show-menu-arrow form-control" data-size="5" multiple id="product_categ">
+                                    <option value="ANTIINFLAMATORIO">ANTIINFLAMATORIO</option>
+                                    <option value="ANTIBIÓTICO">ANTIBIÓTICO</option>
+                                    <option value="ANTÍDOTO">ANTÍDOTO</option>
+                                    <option value="ANABÓLICO">ANABÓLICO</option>
+                                    <option value="ANESTÉSICOS Y EUTANÁSICOS">ANESTÉSICOS Y EUTANÁSICOS</option>
+                                    <option value="VITAMINAS Y MINERALES">VITAMINAS Y MINERALES</option>
+                                    <option value="ANTIPARASITARIO">ANTIPARASITARIO</option>
+                                    <option value="ÓTICOS Y OFTÁLMICOS">ÓTICOS Y OFTÁLMICOS</option>
+                                    <option value="TODAS ESPECIES">TODAS ESPECIES</option>
+                                    <option value="ANTISÉPTICO Y DESINFECTANTE">ANTISÉPTICO Y DESINFECTANTE</option>
+                                    <option value="DERMATOLÓGICOS">DERMATOLÓGICOS</option>
+                                    <option value="GASTROINTESTINALES">GASTROINTESTINALES</option>
+                                    <option value="COSMÉTICO">COSMÉTICO</option>
+                                    <option value="IDENTIFICACIÓN Y ACCESORIOS">IDENTIFICACIÓN Y ACCESORIOS</option>
+                                    <option value="ANTIHEMORRÁGICOS">ANTIHEMORRÁGICOS</option>
+                                    <option value="HORMONALES">HORMONALES</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="form-group">
+                                <label for="disabledTextInput">Nombre</label>
+                                <input required type="text" name="product_name" id="nombre" class="form-control" required="required" placeholder="Nombre">
+                            </div>
+                            <div class="form-group">
+                                <label>Unidad Técnica</label>
+                                <select class="selectpicker show-menu-arrow form-control" multiple id="product_unidTec">
+                                    <option value="ANIMALES DE PRODUCCIÓN">ANIMALES DE PRODUCCIÓN</option>
+                                    <option value="ANIMALES DE COMPAÑÍA">ANIMALES DE COMPAÑÍA</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="disabledTextInput">Laboratorio</label>
+                                <select class="selectpicker show-menu-arrow form-control" id="product_labo">
+                                    <option value="LAVET">LAVET</option>
+                                    <option value="LABIPHARM">LABIPHARM</option>
+                                    <option value="INVET">INVET</option>
+                                    <option value="LABORATORIOS VM">LABORATORIOS VM</option>
+                                    <option value="SCHIPPERS - VET BRANDS">SCHIPPERS - VET BRANDS</option>
+                                    <option value="ERMA">ERMA</option>
+                                    <option value="GAMMA">GAMMA</option>
+                                    <option value="MSD - ANIMAL HEALTH">MSD - ANIMAL HEALTH</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="form-group">
+                                <label for="disabledTextInput">Descripción</label>
+                                <textarea name="product_description" class="form-control" id="descripcion" rows="6"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="disabledTextInput">Indicaciones</label>
+                                <textarea name="product_indications" class="form-control" id="indicaciones" rows="6"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="disabledTextInput">Contraindicaciones</label>
+                                <textarea name="product_contraindication" class="form-control" id="contraIndicaciones" rows="6"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+
+                            <div class="form-group">
+                                <label for="disabledTextInput">Tipo de producto y uso</label>
+                                <textarea name="product_type_use" class="form-control" id="typeUse" rows="6"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <table id="tablaDosis" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Presentación(Dosis)</th>
+                                            <th>Precio(Lps)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr id="rowDosis1">
+                                            <td> <input type="text" id="dosis1" name="product_dosis1" class="form-control"
+                                                    required="required" placeholder="Presentación">
+                                            </td>
+                                            <td><input step="0.01" min="0" value="0.00" type="number" id="product_price1"
+                                                    class="form-control" required="required">
+                                            </td>
+                                            <td>
+                                                <button id="rowDosis1" type="button" class="btn btn-danger" onclick="removeRow(this)">-</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button id="btnAddRow" type="button" class="btn btn-success" onclick="addRow()">+</button>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="disabledTextInput">Imagen Producto</label>
+                                <div id="mostrarimagen"></div>
+                                <input type="file" accept="image/*" id="imagenProducto" onchange="handleFileInput()" required="required">
+                            </div>
+                            <div class="form-group">
+                                <label for="disabledTextInput">Ficha de Descarga</label>
+                                <div id="mostrarFicha"></div>
+                                <input type="file" accept="image/*" id="fichaProducto" onchange="handleFileInputFi()" required="required">
+                            </div>
+                        </div>
+
+                        <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="form-group">
+                                <button id="btnSubir" type="button" class="btn btn-success" onclick="abrirModal()">Agregar</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </form>
+                <!-- ... end Personal Information Form  -->
+            </div>
+        </div>
+        <!--Form-->
+
+        <!--modal-->
+        <div class="w3-container">
+            <div id="id01" class="w3-modal">
+                <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+                    <div class="w3-center">
+                        <br>
+                        <span onclick="cerrarModal()" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+                    </div>
+                    <div id="mostrarImg"></div>
+                    <form class="w3-container" action="/action_page.php">
+                        <div class="w3-section">
+                            <label>
+                                <b>Código</b>
+                            </label>
+                            <input id='code' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="code" disabled required>
+                            <label>
+                                <b>Nombre</b>
+                            </label>
+                            <input id='name' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="name" disabled required>
+                            <label>
+                                <b>Descripción</b>
+                            </label>
+                            <textarea rows="4" cols="50" id='description' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="description"
+                                disabled required></textarea>
+                            <label>
+                                <b>Indicaciones</b>
+                            </label>
+                            <textarea rows="4" cols="50" id='indications' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="indications"
+                                disabled required></textarea>
+                            <label>
+                                <b>Contraindicaciones</b>
+                            </label>
+                            <textarea rows="4" cols="50" id='contraindication' class="w3-input w3-border w3-margin-bottom" type="text" placeholder=""
+                                name="contraindication" disabled required></textarea>
+                            <label>
+                                <b>Categoría</b>
+                            </label>
+                            <input id='categ' class="w3-input w3-border w3-margin-bottom" type="text" name="categ" disabled required>
+                            <label>
+                                <b>Tipo de uso</b>
+                            </label>
+                            <textarea rows="4" cols="50" id='typeUseModal' class="w3-input w3-border w3-margin-bottom" type="text" name="typeUseMod"
+                                disabled required>
+                            </textarea>
+                            <label>
+                                <b>Unidad técnica</b>
+                            </label>
+                            <input id='unidTec' class="w3-input w3-border w3-margin-bottom" type="text" name="unidTec" disabled required>
+                            <label>
+                                <b>Especie</b>
+                            </label>
+                            <input id='species' class="w3-input w3-border w3-margin-bottom" type="text" name="species" disabled required>
+                            <label>
+                                <b>Laboratorio</b>
+                            </label>
+                            <input id='lab' class="w3-input w3-border w3-margin-bottom" type="text" name="lab" disabled required>
+                            <table id="tablaDos" style="width:100%" type="text" name="lab" disabled required>
+                            </table>
+                        </div>
+                    </form>
+
+                    <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+                        <button onclick="cerrarModal()" type="button" class="w3-button w3-red">Cancel</button>
+                        <button onclick="submitOrder()" type="button" class="w3-button w3-green">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--modal-->
+    </div>
+    <!--Body-->
+
+</body>
+
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=devide-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Backend</title>
+    <link href="assets/fonts/font-roboto.css" rel="stylesheet">
+    <link href="assets/bootstrap/bootstrap4-alpha3.min.css" rel="stylesheet">
+    <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/web-analytics/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="productos2.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
+
+    <script src="assets/jquery/jquery-3.1.0.min.js"></script>
+    <script src="assets/tether/tether.min.js"></script>
+    <script src="assets/bootstrap/bootstrap4-alpha3.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="cargarProductos2.js"></script>
+
+    </body>
+</head>
+
+<body>
+    <!-- header -->
+    <nav class="navbar navbar-fixed-top" id="header">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <div id="sidebar-toggle-button">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </div>
+                <div class="brand">
+                    <a href="listaproductos.html">
+                        <span class="hidden-xs-down m-r-3">Dashboard</span>
+                        <span class="lead">Listar Productos</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+    <!-- /header -->
+
+    <!-- sidebar -->
+    <div class="sidebar-toggle" id="sidebar">
+        <ul class="nav nav-sidebar">
+            <li>
+                <a href="web-analytics-real-time.html">
+                    <i class="fa fa-clock-o fa-lg fa-fw" aria-hidden="true"></i>
+                    <span>Tiempo Real</span>
+                </a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+                <a href="principal.html">
+                    <i class="far fa-images fa-lg fa-fw" aria-hidden="true"></i>
+                    <span>Carrusel Principal</span>
+                </a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+                <a href="ofertas.html">
+                    <i class="fa fa-photo fa-lg fa-fw" aria-hidden="true"></i>
+                    <span>Carrusel de Ofertas</span>
+                </a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+                <a href="descargas.html">
+                    <i class="fa fa-download fa-lg fa-fw" aria-hidden="true"></i>
+                    <span>Descargas</span>
+                </a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+                <a href="clientes.html">
+                    <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+                    <span>Clientes</span>
+                </a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+                <a href="productos.html">
+                    <i class="fas fa-shopping-cart fa-lg fa-fw" aria-hidden="true"></i>
+                    <span>Productos</span>
+                </a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+                <a href="listaproductos.html" class="active">
+                    <i class="fas fa-clipboard-list fa-lg fa-fw" aria-hidden="true"></i>
+                    <span>Listar productos</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <script>
+        $('#sidebar-toggle-button').on('click', function () {
+            $('#sidebar').toggleClass('sidebar-toggle');
+            $('#page-content-wrapper').toggleClass('page-content-toggle');
+        });
+    </script>
+    <!-- /sidebar -->
+    <div class="page">
+        <div id="main">
+            <h1>Lista de productos</h1>
+            <div id="productRows" class="row"></div>
+            <div class="links">
+                <button onclick="chargePrevPage()">Anterior</button>
+                <div id="htmlPaginaActual" class="paginacionElm">
+                    <p>Página Actual</p>
+                </div>
+                <button onclick="chargeNextPage()">Siguiente</button>
+            </div>
+        </div>
+        <div class="w3-container">
+
+
+            <div id="id01" class="w3-modal">
+                <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+                    <div class="w3-center">
+                        <br>
+                        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright"
+                            title="Close Modal">&times;</span>
+                    </div>
+                    <div id="mostrarImg"></div>
+                    <form class="w3-container" action="/action_page.php">
+                        <div class="w3-section">
+                            <label>
+                                <b>Código</b>
+                            </label>
+                            <input id='code' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="code" disabled required>
+                            <label>
+                                <b>Visitas</b>
+                            </label>
+                            <input id='visits' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="visits" disabled required>
+
+                            <label>
+                                <b>Nombre</b>
+                            </label>
+                            <input id='name' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="name" disabled required>
+                            <label>
+                                <b>Descripción</b>
+                            </label>
+                            <textarea rows="4" cols="50" id='description' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="description"
+                                disabled required></textarea>
+                            <label>
+                                <b>Indicaciones</b>
+                            </label>
+                            <textarea rows="4" cols="50" id='indications' class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="indications"
+                                disabled required></textarea>
+                            <label>
+                                <b>Contraindicaciones</b>
+                            </label>
+                            <textarea rows="4" cols="50" id='contraindication' class="w3-input w3-border w3-margin-bottom" type="text" placeholder=""
+                                name="contraindication" disabled required></textarea>
+                            <label>
+                                <b>Categoría</b>
+                            </label>
+                            <input id='categ' class="w3-input w3-border w3-margin-bottom" type="text" name="categ" disabled required>
+                            <label>
+                                <b>Tipo de uso</b>
+                            </label>
+                            <textarea rows="4" cols="50" id='typeUseModal' class="w3-input w3-border w3-margin-bottom" type="text" name="typeUseModal"
+                                disabled required>
+                            </textarea>
+                            <label>
+                                <b>Unidad técnica</b>
+                            </label>
+                            <input id='unidTec' class="w3-input w3-border w3-margin-bottom" type="text" name="unidTec" disabled required>
+                            <label>
+                                <b>Especie</b>
+                            </label>
+                            <input id='species' class="w3-input w3-border w3-margin-bottom" type="text" name="species" disabled required>
+                            <label>
+                                <b>Laboratorio</b>
+                            </label>
+                            <input id='lab' class="w3-input w3-border w3-margin-bottom" type="text" name="lab" disabled required>
+                            <table id="tablaDos" style="width:100%" type="text" name="lab" disabled required>
+                            </table>
+                        </div>
+                    </form>
+
+                    <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+                        <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+                        <button onclick="onAcept(tempcliente.id)" type="button" class="w3-button w3-green">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>
