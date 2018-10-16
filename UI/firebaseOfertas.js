@@ -2,12 +2,12 @@ var selectedfile;
 var imagen = [];
 var imageRef;
 var config = {
-    apiKey: "AIzaSyBZAKqZfYiuQDTF-pDtZsxlO5X72wNFA1Q",
-    authDomain: "realva-54c4a.firebaseapp.com",
-    databaseURL: "https://realva-54c4a.firebaseio.com",
-    projectId: "realva-54c4a",
-    storageBucket: "realva-54c4a.appspot.com",
-    messagingSenderId: "233461489484"
+    apiKey: "AIzaSyDDzZtyfob58UodI-DHwpU7T1qmkT1TJF8",
+    authDomain: "induvet-cb00d.firebaseapp.com",
+    databaseURL: "https://induvet-cb00d.firebaseio.com",
+    projectId: "induvet-cb00d",
+    storageBucket: "induvet-cb00d.appspot.com",
+    messagingSenderId: "598870481132"
 };
 firebase.initializeApp(config);
 window.onload = function () {
