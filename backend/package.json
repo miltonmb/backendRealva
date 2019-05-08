@@ -19,6 +19,8 @@
   "homepage": "https://github.com/miltonmb/backend#readme",
   "dependencies": {
     "express": "^4.16.3",
+    "firebase-admin": "^5.12.1",
+    "mongodb": "^3.0.10",
     "mysql": "^2.15.0"
   }
 }
